@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Area\CreateAreaRequest;
-use App\Http\Requests\Area\DeleteAreaRequest;
+use App\Http\Requests\Area\CheckAreaIdRequest;
 use App\Http\Requests\Area\UpdateAreaRequest;
 use App\Http\Requests\Flooring\CreateFlooringRequest;
-use App\Http\Requests\Flooring\DeleteFlooringRequest;
+use App\Http\Requests\Flooring\CheckFlooringIdRequest;
 use App\Http\Requests\Flooring\UpdateFlooringRequest;
 use App\Http\Traits\AreaTrait;
 use App\Http\Traits\FlooringTrait;
@@ -25,12 +25,12 @@ class FlooringController extends Controller
     public function index()
     {
         $floorings = $this->getFloorings();
-        return view('Pages.Flooring.index', compact('floorings'));
+        return view('pages.flooring.index', compact('floorings'));
     }
 
     public function create()
     {
-        return view('Pages.Flooring.create');
+        return view('pages.flooring.create');
     }
 
     public function store(CreateFlooringRequest $request)
@@ -38,19 +38,19 @@ class FlooringController extends Controller
         $this->flooringModel::create([
             'floor' => $request->floor
         ]);
-        return redirect(route('flooring.index'));
+        return redirect(route('admin.flooring.index'));
     }
 
-    public function delete(DeleteFlooringRequest $request)
+    public function delete(CheckFlooringIdRequest $request)
     {
         $this->findFlooringById($request->id)->delete();
         return back();
     }
 
-    public function edit(DeleteFlooringRequest $request)
+    public function edit(CheckFlooringIdRequest $request)
     {
         $flooring = $this->findFlooringById($request->id);
-        return view('Pages.Flooring.edit', compact('flooring'));
+        return view('pages.flooring.edit', compact('flooring'));
     }
 
     public function update(UpdateFlooringRequest $request)
@@ -58,6 +58,6 @@ class FlooringController extends Controller
         $this->findFlooringById($request->id)->update([
             'floor' => $request->floor
         ]);
-        return redirect(route('flooring.index'));
+        return redirect(route('admin.flooring.index'));
     }
 }

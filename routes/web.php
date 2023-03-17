@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\FlooringController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SummaryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,48 +22,93 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-
-Route::group(['prefix' => 'area', 'as' => 'area.'], function () {
-    Route::controller(AreaController::class)->group(function () {
-        Route::get('index', 'index')->name('index');
-        Route::get('create', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
-        Route::delete('delete', 'delete')->name('delete');
-        Route::post('edit', 'edit')->name('edit');
-        Route::put('update', 'update')->name('update');
+Route::group(['prefix' => 'error', 'as' => 'error.'], function () {
+    Route::controller(ErrorController::class)->group(function () {
+        Route::get('404', 'pageNotFound')->name('404');
     });
 });
 
-Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
-    Route::controller(GeneralController::class)->group(function () {
-        Route::get('index', 'index')->name('index');
-        Route::get('create', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
-        Route::delete('delete', 'delete')->name('delete');
-        Route::post('edit', 'edit')->name('edit');
-        Route::put('update', 'update')->name('update');
+Route::group(['as' => 'auth.'], function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('login', 'login')->name('login');
     });
 });
 
-Route::group(['prefix' => 'flooring', 'as' => 'flooring.'], function () {
-    Route::controller(FlooringController::class)->group(function () {
-        Route::get('index', 'index')->name('index');
-        Route::get('create', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
-        Route::delete('delete', 'delete')->name('delete');
-        Route::post('edit', 'edit')->name('edit');
-        Route::put('update', 'update')->name('update');
-    });
-});
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
 
-Route::group(['prefix' => 'summary', 'as' => 'summary.'], function () {
-    Route::controller(SummaryController::class)->group(function () {
+    Route::controller(HomeController::class)->group(function () {
         Route::get('index', 'index')->name('index');
-        Route::get('create', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
-        Route::delete('delete', 'delete')->name('delete');
-        Route::post('edit', 'edit')->name('edit');
-        Route::put('update', 'update')->name('update');
     });
+
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('logout', 'logout')->name('logout');
+    });
+
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+        Route::controller(UserController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'area', 'as' => 'area.'], function () {
+        Route::controller(AreaController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
+        Route::controller(GeneralController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'flooring', 'as' => 'flooring.'], function () {
+        Route::controller(FlooringController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'summary', 'as' => 'summary.'], function () {
+        Route::controller(SummaryController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+        Route::controller(BlogController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
 });

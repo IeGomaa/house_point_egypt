@@ -45,7 +45,7 @@ var chart = new ApexCharts(
 chart.render();
 
 
-// Simple Line Area
+// Simple Line area
 
 var sLineArea = {
     chart: {
@@ -72,7 +72,7 @@ var sLineArea = {
 
     xaxis: {
         type: 'datetime',
-        categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],                
+        categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
     },
     tooltip: {
         x: {
@@ -102,7 +102,7 @@ var sCol = {
         bar: {
             horizontal: false,
             columnWidth: '55%',
-            endingShape: 'rounded'  
+            endingShape: 'rounded'
         },
     },
     // colors: ['#888ea8', '#1b55e2'],
@@ -363,7 +363,7 @@ var radialChart = {
         }
     },
     series: [44, 55, 67, 83],
-    labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],    
+    labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
 }
 
 var chart = new ApexCharts(
