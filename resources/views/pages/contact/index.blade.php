@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    User | Index
+    Contact | Index
 @endsection
 
 @push('css')
@@ -24,10 +24,7 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>User Table</h4>
-                                        <a href="{{route('admin.user.create')}}">
-                                            <button class="btn btn-primary">Create User</button>
-                                        </a>
+                                        <h4>Contact Table</h4>
                                     </div>
                                 </div>
                             </div>
@@ -39,20 +36,24 @@
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Message</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($users as $key => $user)
+                                            @foreach($contacts as $key => $contact)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $contact->name }}</td>
+                                                    <td>{{ $contact->email }}</td>
+                                                    <td>{{ $contact->phone }}</td>
+                                                    <td>{{ $contact->message }}</td>
                                                     <td>
-                                                        <form action="{{ route('admin.user.delete') }}" method="post">
+                                                        <form action="{{ route('admin.contact.delete') }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $user->id }}">
+                                                            <input type="hidden" name="id" value="{{ $contact->id }}">
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>

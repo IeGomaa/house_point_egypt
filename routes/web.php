@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\FlooringController;
 use App\Http\Controllers\GeneralController;
@@ -51,8 +52,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::delete('delete', 'delete')->name('delete');
-            Route::post('edit', 'edit')->name('edit');
-            Route::put('update', 'update')->name('update');
         });
     });
 
@@ -108,6 +107,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::delete('delete', 'delete')->name('delete');
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
+        Route::controller(ContactController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::delete('delete', 'delete')->name('delete');
         });
     });
 
