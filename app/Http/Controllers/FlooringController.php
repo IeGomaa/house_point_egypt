@@ -12,6 +12,7 @@ use App\Http\Traits\AreaTrait;
 use App\Http\Traits\FlooringTrait;
 use App\Models\Area;
 use App\Models\Flooring;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FlooringController extends Controller
 {
@@ -38,12 +39,14 @@ class FlooringController extends Controller
         $this->flooringModel::create([
             'floor' => $request->floor
         ]);
+        Alert::toast('Flooring Was Created Successfully', 'success');
         return redirect(route('admin.flooring.index'));
     }
 
     public function delete(CheckFlooringIdRequest $request)
     {
         $this->findFlooringById($request->id)->delete();
+        Alert::toast('Flooring Was Deleted Successfully', 'success');
         return back();
     }
 
@@ -58,6 +61,7 @@ class FlooringController extends Controller
         $this->findFlooringById($request->id)->update([
             'floor' => $request->floor
         ]);
+        Alert::toast('Flooring Was Updated Successfully', 'success');
         return redirect(route('admin.flooring.index'));
     }
 }

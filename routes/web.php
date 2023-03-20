@@ -4,8 +4,11 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\FlooringController;
+use App\Http\Controllers\FlooringNumController;
+use App\Http\Controllers\FurnitureController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SummaryController;
@@ -101,6 +104,39 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
         Route::controller(BlogController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'country', 'as' => 'country.'], function () {
+        Route::controller(CountryController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'flooringNum', 'as' => 'flooringNum.'], function () {
+        Route::controller(FlooringNumController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'furniture', 'as' => 'furniture.'], function () {
+        Route::controller(FurnitureController::class)->group(function () {
             Route::get('index', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');

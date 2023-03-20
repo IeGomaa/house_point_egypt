@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Contact\DeleteContactRequest;
 use App\Http\Traits\ContactTrait;
 use App\Models\Contact;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -24,6 +25,7 @@ class ContactController extends Controller
     public function delete(DeleteContactRequest $request)
     {
         $this->findContactById($request->id)->delete();
+        Alert::toast('Contact Was Created Successfully', 'success');
         return back();
     }
 }

@@ -69,5 +69,7 @@
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 <script src="{{ asset('dashboard/assets/js/authentication/form-2.js') }}"></script>
 
+@include('sweetalert::alert')
+
 </body>
 </html>

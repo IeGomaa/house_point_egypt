@@ -7,6 +7,7 @@ use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Traits\UserTrait;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -35,12 +36,14 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+        Alert::toast('User Was Created Successfully', 'success');
         return redirect(route('admin.user.index'));
     }
 
     public function delete(DeleteUserRequest $request)
     {
         $this->findUserById($request->id)->delete();
+        Alert::toast('User Was Deleted Successfully', 'success');
         return back();
     }
 }

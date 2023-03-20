@@ -39,11 +39,4 @@ class Handler extends ExceptionHandler
             //
         });
     }
-
-    public function render($request, Throwable $e)
-    {
-        if ($e instanceof NotFoundHttpException) {
-            return redirect(route('error.404'));
-        }
-    }
 }

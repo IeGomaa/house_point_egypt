@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -17,8 +18,10 @@ class AuthController extends Controller
     {
         $credentials = $request->only(['email', 'password']);
         if (Auth::attempt($credentials)) {
+            Alert::toast('Login Successfully', 'success');
             return redirect(route('admin.index'));
         }
+        Alert::toast('Login Failed', 'error');
         return redirect(route('auth.index'));
     }
 

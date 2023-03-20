@@ -7,6 +7,7 @@ use App\Http\Requests\Area\CheckAreaIdRequest;
 use App\Http\Requests\Area\UpdateAreaRequest;
 use App\Http\Traits\AreaTrait;
 use App\Models\Area;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AreaController extends Controller
 {
@@ -33,12 +34,14 @@ class AreaController extends Controller
         $this->areaModel::create([
             'name' => $request->name
         ]);
+        Alert::toast('Area Was Created Successfully', 'success');
         return redirect(route('admin.area.index'));
     }
 
     public function delete(CheckAreaIdRequest $request)
     {
         $this->findAreaById($request->id)->delete();
+        Alert::toast('Area Was Deleted Successfully', 'success');
         return back();
     }
 
@@ -53,6 +56,7 @@ class AreaController extends Controller
         $this->findAreaById($request->id)->update([
             'name' => $request->name
         ]);
+        Alert::toast('Area Was Updated Successfully', 'success');
         return redirect(route('admin.area.index'));
     }
 }

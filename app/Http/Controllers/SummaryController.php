@@ -12,6 +12,7 @@ use App\Http\Traits\AreaTrait;
 use App\Http\Traits\SummaryTrait;
 use App\Models\Area;
 use App\Models\Summary;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SummaryController extends Controller
 {
@@ -38,12 +39,14 @@ class SummaryController extends Controller
         $this->summaryModel::create([
             'summary' => $request->summary
         ]);
+        Alert::toast('Summary Was Created Successfully', 'success');
         return redirect(route('admin.summary.index'));
     }
 
     public function delete(CheckSummaryIdRequest $request)
     {
         $this->findSummaryById($request->id)->delete();
+        Alert::toast('Summary Was Deleted Successfully', 'success');
         return back();
     }
 
@@ -58,6 +61,7 @@ class SummaryController extends Controller
         $this->findSummaryById($request->id)->update([
             'summary' => $request->summary
         ]);
+        Alert::toast('Summary Was Updated Successfully', 'success');
         return redirect(route('admin.summary.index'));
     }
 }

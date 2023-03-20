@@ -7,6 +7,7 @@ use App\Http\Requests\General\CheckGeneralIdRequest;
 use App\Http\Requests\General\UpdateGeneralRequest;
 use App\Http\Traits\GeneralTrait;
 use App\Models\General;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GeneralController extends Controller
 {
@@ -33,12 +34,14 @@ class GeneralController extends Controller
         $this->generalModel::create([
             'name' => $request->name
         ]);
+        Alert::toast('General Was Created Successfully', 'success');
         return redirect(route('admin.general.index'));
     }
 
     public function delete(CheckGeneralIdRequest $request)
     {
         $this->findGeneralById($request->id)->delete();
+        Alert::toast('General Was Deleted Successfully', 'success');
         return back();
     }
 
@@ -53,6 +56,7 @@ class GeneralController extends Controller
         $this->findGeneralById($request->id)->update([
             'name' => $request->name
         ]);
+        Alert::toast('General Was Updated Successfully', 'success');
         return redirect(route('admin.general.index'));
     }
 }
