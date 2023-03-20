@@ -36,7 +36,7 @@ class CreatePropertiesTable extends Migration
             $table->foreignId('sub_area_id')->constrained()->cascadeOnDelete();
             $table->foreignId('property_type_id')->constrained()->cascadeOnDelete();
             $table->foreignId('flooring_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('flooring_num_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('floor_id')->constrained()->cascadeOnDelete();
             $table->foreignId('furniture_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

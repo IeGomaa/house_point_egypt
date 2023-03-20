@@ -6,9 +6,10 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\Floor\FloorController;
+use App\Http\Controllers\Floor\FloorExcelController;
 use App\Http\Controllers\Flooring\FlooringController;
 use App\Http\Controllers\Flooring\FlooringExcelController;
-use App\Http\Controllers\FloorController;
 use App\Http\Controllers\FurnitureController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\HomeController;
@@ -141,6 +142,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::delete('delete', 'delete')->name('delete');
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'floor', 'as' => 'floor.'], function () {
+        Route::controller(FloorExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
         });
     });
 

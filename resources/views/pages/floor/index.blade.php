@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.floor.create')}}">
                                             <button class="btn btn-primary">Create Floor Number</button>
                                         </a>
+                                        <a href="{{route('admin.floor.import-page')}}">
+                                            <button class="btn btn-success">Upload Floor Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.floor.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

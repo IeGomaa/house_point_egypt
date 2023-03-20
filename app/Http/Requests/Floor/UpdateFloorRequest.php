@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Floor;
 
-use App\Models\FlooringNum;
+use App\Models\Floor;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateFloorRequest extends FormRequest
@@ -24,8 +24,8 @@ class UpdateFloorRequest extends FormRequest
      */
     public function rules(): array
     {
-        return array_merge(FlooringNum::createRule(), [
-            'id' => 'required|integer|exists:flooring_nums,id'
+        return array_merge(Floor::createRule(), [
+            'id' => 'required|integer|exists:floors,id'
         ]);
     }
 }

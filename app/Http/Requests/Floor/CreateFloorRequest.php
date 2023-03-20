@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Floor;
 
-use App\Models\FlooringNum;
+use App\Models\Floor;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateFloorRequest extends FormRequest
@@ -24,6 +24,6 @@ class CreateFloorRequest extends FormRequest
      */
     public function rules(): array
     {
-        return FlooringNum::createRule();
+        return Floor::createRule();
     }
 }

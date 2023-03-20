@@ -4,7 +4,7 @@ namespace App\Http\Requests\Floor;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CheckFloorIdRequest extends FormRequest
+class FloorImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class CheckFloorIdRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer|exists:floors,id'
+            'floor' => 'required|file|mimes:xlsx'
         ];
     }
 }

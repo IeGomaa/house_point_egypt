@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Floor;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Floor\CheckFloorIdRequest;
 use App\Http\Requests\Floor\CreateFloorRequest;
 use App\Http\Requests\Floor\UpdateFloorRequest;
-use App\Http\Traits\FlooringNumTrait;
-use App\Models\FlooringNum;
+use App\Http\Traits\FloorTrait;
+use App\Models\Floor;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class FloorController extends Controller
 {
-    use FlooringNumTrait;
-    private $flooringNumModel;
-    public function __construct(FlooringNum $flooringNum)
+    use FloorTrait;
+    private $floorModel;
+    public function __construct(Floor $floor)
     {
-        $this->flooringNumModel = $flooringNum;
+        $this->floorModel = $floor;
     }
 
     public function index()
     {
-        $floors = $this->getFlooringNums();
+        $floors = $this->getFloors();
         return view('pages.floor.index', compact('floors'));
     }
 
@@ -31,7 +32,7 @@ class FloorController extends Controller
 
     public function store(CreateFloorRequest $request)
     {
-        $this->flooringNumModel::create([
+        $this->floorModel::create([
             'number' => $request->number
         ]);
         Alert::toast('Floor Number Was Create Successfully', 'success');
@@ -40,20 +41,20 @@ class FloorController extends Controller
 
     public function delete(CheckFloorIdRequest $request)
     {
-        $this->findFlooringNumById($request->id)->delete();
+        $this->findFloorById($request->id)->delete();
         Alert::toast('Floor Number Was Deleted Successfully', 'success');
         return back();
     }
 
     public function edit(CheckFloorIdRequest $request)
     {
-        $floor = $this->findFlooringNumById($request->id);
+        $floor = $this->findFloorById($request->id);
         return view('pages.floor.edit', compact('floor'));
     }
 
     public function update(UpdateFloorRequest $request)
     {
-        $this->findFlooringNumById($request->id)->update([
+        $this->findFloorById($request->id)->update([
             'number' => $request->number
         ]);
         Alert::toast('Floor Number Was Updated Successfully', 'success');
