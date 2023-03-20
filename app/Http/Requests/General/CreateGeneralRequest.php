@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\General;
 
+use App\Models\General;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateGeneralRequest extends FormRequest
@@ -23,8 +24,6 @@ class CreateGeneralRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|max:255'
-        ];
+        return General::createRule();
     }
 }

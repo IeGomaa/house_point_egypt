@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\General;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Area\CreateAreaRequest;
 use App\Http\Requests\General\CheckGeneralIdRequest;
 use App\Http\Requests\General\UpdateGeneralRequest;

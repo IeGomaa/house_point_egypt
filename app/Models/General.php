@@ -11,4 +11,11 @@ class General extends Model
     protected $fillable = [
         'name'
     ];
+
+    public static function createRule(): array
+    {
+        return [
+            'name' => 'required|string|max:255'
+        ];
+    }
 }

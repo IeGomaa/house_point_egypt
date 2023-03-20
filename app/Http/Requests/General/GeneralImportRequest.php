@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\General;
 
-use App\Models\General;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGeneralRequest extends FormRequest
+class GeneralImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +23,8 @@ class UpdateGeneralRequest extends FormRequest
      */
     public function rules(): array
     {
-        return array_merge(General::createRule(), [
-            'id' => 'required|integer|exists:generals,id'
-        ]);
+        return [
+            'general' => 'required|file|mimes:xlsx'
+        ];
     }
 }
