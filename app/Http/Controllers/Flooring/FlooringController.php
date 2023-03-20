@@ -21,8 +21,8 @@ class FlooringController extends Controller
 
     public function index()
     {
-        $floorings = $this->getFloorings();
-        return view('pages.flooring.index', compact('floorings'));
+        $flooring = $this->getFloorings();
+        return view('pages.flooring.index', compact('flooring'));
     }
 
     public function create()

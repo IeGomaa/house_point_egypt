@@ -5,9 +5,9 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($floorings as $flooring)
+    @foreach($flooring as $val)
         <tr>
-            <td>{{ $flooring->floor }}</td>
+            <td>{{ $val->floor }}</td>
         </tr>
     @endforeach
     </tbody>

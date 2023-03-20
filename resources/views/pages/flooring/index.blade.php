@@ -49,22 +49,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($floorings as $key => $flooring)
+                                            @foreach($flooring as $key => $val)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $flooring->floor }}</td>
+                                                    <td>{{ $val->floor }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.flooring.delete') }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $flooring->id }}">
+                                                            <input type="hidden" name="id" value="{{ $val->id }}">
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
                                                     <td>
                                                         <form action="{{ route('admin.flooring.edit') }}" method="post">
                                                             @csrf
-                                                            <input type="hidden" name="id" value="{{ $flooring->id }}">
+                                                            <input type="hidden" name="id" value="{{ $val->id }}">
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
