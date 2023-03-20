@@ -15,7 +15,7 @@ class CreateFlooringsTable extends Migration
     {
         Schema::create('floorings', function (Blueprint $table) {
             $table->id();
-            $table->string('floor');
+            $table->string('floor')->unique();
             $table->timestamps();
         });
     }

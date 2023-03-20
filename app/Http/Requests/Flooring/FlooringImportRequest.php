@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Flooring;
 
-use App\Models\Flooring;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateFlooringRequest extends FormRequest
+class FlooringImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +23,8 @@ class CreateFlooringRequest extends FormRequest
      */
     public function rules(): array
     {
-        return Flooring::createRule();
+        return [
+            'flooring' => 'required|file|mimes:xlsx'
+        ];
     }
 }

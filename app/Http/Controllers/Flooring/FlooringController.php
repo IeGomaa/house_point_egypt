@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flooring;
 
-use App\Http\Requests\Area\CreateAreaRequest;
-use App\Http\Requests\Area\CheckAreaIdRequest;
-use App\Http\Requests\Area\UpdateAreaRequest;
-use App\Http\Requests\Flooring\CreateFlooringRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Flooring\CheckFlooringIdRequest;
+use App\Http\Requests\Flooring\CreateFlooringRequest;
 use App\Http\Requests\Flooring\UpdateFlooringRequest;
-use App\Http\Traits\AreaTrait;
 use App\Http\Traits\FlooringTrait;
-use App\Models\Area;
 use App\Models\Flooring;
 use RealRashid\SweetAlert\Facades\Alert;
 

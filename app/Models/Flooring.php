@@ -11,4 +11,11 @@ class Flooring extends Model
     protected $fillable = [
         'floor'
     ];
+
+    public static function createRule(): array
+    {
+        return [
+            'floor' => 'required|string|max:255|unique:floorings,floor'
+        ];
+    }
 }

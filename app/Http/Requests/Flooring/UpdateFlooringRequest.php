@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Flooring;
 
+use App\Models\Flooring;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateFlooringRequest extends FormRequest
@@ -24,8 +25,8 @@ class UpdateFlooringRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'floor' => 'required|string|max:255',
-            'id' => 'required|integer|exists:floorings,id'
+            'id' => 'required|integer|exists:floorings,id',
+            'floor' => 'required|string|max:255|unique:floorings,floor,' . request('id')
         ];
     }
 }
