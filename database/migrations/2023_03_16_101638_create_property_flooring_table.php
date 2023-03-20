@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFlooringsTable extends Migration
+class CreatePropertyFlooringTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateFlooringsTable extends Migration
      */
     public function up()
     {
-        Schema::create('floorings', function (Blueprint $table) {
+        Schema::create('property_flooring', function (Blueprint $table) {
             $table->id();
-            $table->string('floor')->unique();
+            $table->foreignId('property_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('flooring_id')->constrained('flooring')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateFlooringsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floorings');
+        Schema::dropIfExists('property_floorings');
     }
 }

@@ -25,8 +25,8 @@ class UpdateFlooringRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer|exists:floorings,id',
-            'floor' => 'required|string|max:255|unique:floorings,floor,' . request('id')
+            'id' => 'required|integer|exists:flooring,id',
+            'floor' => 'required|string|max:255|unique:flooring,floor,' . request('id')
         ];
     }
 }

@@ -12,10 +12,12 @@ class Flooring extends Model
         'floor'
     ];
 
+    protected $table = 'flooring';
+
     public static function createRule(): array
     {
         return [
-            'floor' => 'required|string|max:255|unique:floorings,floor'
+            'floor' => 'required|string|max:255|unique:flooring,floor'
         ];
     }
 }

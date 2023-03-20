@@ -24,7 +24,7 @@ class CheckFlooringIdRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|integer|exists:floorings,id'
+            'id' => 'required|integer|exists:flooring,id'
         ];
     }
 }
