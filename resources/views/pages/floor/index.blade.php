@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Flooring Num | Index
+    Floor Number | Index
 @endsection
 
 @push('css')
@@ -24,9 +24,9 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Flooring Num Table</h4>
-                                        <a href="{{route('admin.flooringNum.create')}}">
-                                            <button class="btn btn-primary">Create Flooring Num</button>
+                                        <h4>Floor Number Table</h4>
+                                        <a href="{{route('admin.floor.create')}}">
+                                            <button class="btn btn-primary">Create Floor Number</button>
                                         </a>
                                     </div>
                                 </div>
@@ -37,28 +37,28 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Floor Num</th>
+                                                <th>Number</th>
                                                 <th>Delete</th>
                                                 <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($flooringNums as $key => $flooringNum)
+                                            @foreach($floors as $key => $floor)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $flooringNum->floor_num }}</td>
+                                                    <td>{{ $floor->number }}</td>
                                                     <td>
-                                                        <form action="{{ route('admin.flooringNum.delete') }}" method="post">
+                                                        <form action="{{ route('admin.floor.delete') }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $flooringNum->id }}">
+                                                            <input type="hidden" name="id" value="{{ $floor->id }}">
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="{{ route('admin.flooringNum.edit') }}" method="post">
+                                                        <form action="{{ route('admin.floor.edit') }}" method="post">
                                                             @csrf
-                                                            <input type="hidden" name="id" value="{{ $flooringNum->id }}">
+                                                            <input type="hidden" name="id" value="{{ $floor->id }}">
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>

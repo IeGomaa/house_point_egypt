@@ -15,7 +15,7 @@ class CreateFlooringNumsTable extends Migration
     {
         Schema::create('flooring_nums', function (Blueprint $table) {
             $table->id();
-            $table->string('floor_num');
+            $table->string('number');
             $table->timestamps();
         });
     }

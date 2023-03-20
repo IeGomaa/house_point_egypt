@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\FlooringNum;
+namespace App\Http\Requests\Floor;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CheckFlooringNumIdRequest extends FormRequest
+class CheckFloorIdRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

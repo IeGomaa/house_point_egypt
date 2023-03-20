@@ -8,7 +8,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\Flooring\FlooringController;
 use App\Http\Controllers\Flooring\FlooringExcelController;
-use App\Http\Controllers\FlooringNumController;
+use App\Http\Controllers\FloorController;
 use App\Http\Controllers\FurnitureController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\HomeController;
@@ -133,8 +133,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
         });
     });
 
-    Route::group(['prefix' => 'flooringNum', 'as' => 'flooringNum.'], function () {
-        Route::controller(FlooringNumController::class)->group(function () {
+    Route::group(['prefix' => 'floor', 'as' => 'floor.'], function () {
+        Route::controller(FloorController::class)->group(function () {
             Route::get('index', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');

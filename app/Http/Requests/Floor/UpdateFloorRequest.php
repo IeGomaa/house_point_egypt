@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\FlooringNum;
+namespace App\Http\Requests\Floor;
 
 use App\Models\FlooringNum;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateFlooringNumRequest extends FormRequest
+class UpdateFloorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,8 @@ class CreateFlooringNumRequest extends FormRequest
      */
     public function rules(): array
     {
-        return FlooringNum::createRule();
+        return array_merge(FlooringNum::createRule(), [
+            'id' => 'required|integer|exists:flooring_nums,id'
+        ]);
     }
 }

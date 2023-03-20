@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Flooring Num | Edit
+    Floor Number | Create
 @endsection
 
 @push('css')
@@ -25,16 +25,14 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Flooring Num Edit</h4>
+                                        <h4>Floor Number Create</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form action="{{ route('admin.flooringNum.update') }}" method="post">
-                                    @method('PUT')
-                                    @include('pages.flooringNum._form')
-                                    <input type="hidden" name="id" value="{{ $flooringNum->id }}">
-                                    <input type="submit" value="Update" class="mt-4 mb-4 btn btn-primary">
+                                <form action="{{ route('admin.floor.store') }}" method="post">
+                                    @include('pages.floor._form')
+                                    <input type="submit" value="Send" class="mt-4 mb-4 btn btn-primary">
                                 </form>
                             </div>
                         </div>

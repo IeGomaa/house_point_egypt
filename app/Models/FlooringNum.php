@@ -9,13 +9,13 @@ class FlooringNum extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'floor_num'
+        'number'
     ];
 
     public static function createRule(): array
     {
         return [
-            'floor_num' => 'required|string|max:255'
+            'number' => 'required|string|max:255'
         ];
     }
 }
