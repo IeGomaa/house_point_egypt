@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Furniture;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Furniture\CheckFurnitureIdRequest;
 use App\Http\Requests\Furniture\CreateFurnitureRequest;
 use App\Http\Requests\Furniture\UpdateFurnitureRequest;

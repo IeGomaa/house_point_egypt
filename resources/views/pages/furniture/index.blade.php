@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.furniture.create')}}">
                                             <button class="btn btn-primary">Create Furniture</button>
                                         </a>
+                                        <a href="{{route('admin.furniture.import-page')}}">
+                                            <button class="btn btn-success">Upload Furniture Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.furniture.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
