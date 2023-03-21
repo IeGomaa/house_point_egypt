@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sub_Area;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\SubArea\CheckSubAreaIdRequest;
 use App\Http\Requests\SubArea\CreateSubAreaRequest;
 use App\Http\Requests\SubArea\UpdateSubAreaRequest;
@@ -36,7 +37,10 @@ class SubAreaController extends Controller
     public function store(CreateSubAreaRequest $request)
     {
         $this->subAreaModel::create([
-            'name' => $request->name,
+            'name' => [
+                'en' => $request->name_en,
+                'ar' => $request->name_ar,
+            ],
             'area_id' => $request->area_id
         ]);
         return redirect(route('admin.sub-area.index'));
@@ -58,7 +62,10 @@ class SubAreaController extends Controller
     public function update(UpdateSubAreaRequest $request)
     {
         $this->findSubAreaById($request->id)->update([
-            'name' => $request->name,
+            'name' => [
+                'en' => $request->name_en,
+                'ar' => $request->name_ar,
+            ],
             'area_id' => $request->area_id
         ]);
         return redirect(route('admin.sub-area.index'));

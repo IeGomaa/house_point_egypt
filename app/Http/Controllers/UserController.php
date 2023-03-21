@@ -42,7 +42,12 @@ class UserController extends Controller
 
     public function delete(DeleteUserRequest $request)
     {
-        $this->findUserById($request->id)->delete();
+        $user = $this->findUserById($request->id);
+        if ($user == $this->userModel::where('email', 'ibrahim@admin.com')->first()) {
+            Alert::toast('User Can\'t Delete', 'error');
+            return back();
+        }
+        $user->delete();
         Alert::toast('User Was Deleted Successfully', 'success');
         return back();
     }

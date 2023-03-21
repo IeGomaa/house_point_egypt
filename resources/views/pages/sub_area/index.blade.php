@@ -37,7 +37,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
+                                                <th>Name En</th>
+                                                <th>Name Ar</th>
                                                 <th>Area</th>
                                                 <th>Delete</th>
                                                 <th>Edit</th>
@@ -47,7 +48,8 @@
                                             @foreach($subAreas as $key => $subArea)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $subArea->name }}</td>
+                                                    <td>{{ $subArea->getTranslation('name', 'en') }}</td>
+                                                    <td>{{ $subArea->getTranslation('name', 'ar') }}</td>
                                                     <td>{{ $subArea->area->name }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.sub-area.delete') }}" method="post">

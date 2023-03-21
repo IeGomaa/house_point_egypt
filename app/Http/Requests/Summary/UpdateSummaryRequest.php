@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Summary;
 
+use App\Models\Summary;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSummaryRequest extends FormRequest
@@ -23,9 +24,8 @@ class UpdateSummaryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'summary' => 'required|string|max:255',
+        return array_merge(Summary::createRule(), [
             'id' => 'required|integer|exists:summaries,id'
-        ];
+        ]);
     }
 }

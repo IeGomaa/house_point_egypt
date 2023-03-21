@@ -16,7 +16,7 @@ use App\Http\Controllers\Furniture\FurnitureExcelController;
 use App\Http\Controllers\General\GeneralController;
 use App\Http\Controllers\General\GeneralExcelController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SubAreaController;
+use App\Http\Controllers\Sub_Area\SubAreaController;
 use App\Http\Controllers\SummaryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;

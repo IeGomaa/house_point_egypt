@@ -31,7 +31,24 @@
                             </div>
                             <div class="widget-content widget-content-area">
                                 <form action="{{ route('admin.summary.store') }}" method="post">
-                                    @include('pages.summary._form')
+                                    @csrf
+                                    <div class="form-group mb-4">
+                                        <label>Summary En</label>
+                                        <input type="text" name="summary_en" value="{{ old('summary_en') }}" class="@error('summary_en') is-invalid @enderror form-control">
+                                    </div>
+
+                                    @error('summary_en')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="form-group mb-4">
+                                        <label>Summary Ar</label>
+                                        <input type="text" name="summary_ar" value="{{ old('summary_ar') }}" class="@error('summary_ar') is-invalid @enderror form-control">
+                                    </div>
+
+                                    @error('summary_ar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <input type="submit" value="Send" class="mt-4 mb-4 btn btn-primary">
                                 </form>
                             </div>

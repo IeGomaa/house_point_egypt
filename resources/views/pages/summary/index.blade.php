@@ -37,7 +37,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Summary</th>
+                                                <th>Summary En</th>
+                                                <th>Summary Ar</th>
                                                 <th>Delete</th>
                                                 <th>Edit</th>
                                             </tr>
@@ -46,7 +47,8 @@
                                             @foreach($summaries as $key => $summary)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $summary->summary }}</td>
+                                                    <td>{{ $summary->getTranslation('summary', 'en') }}</td>
+                                                    <td>{{ $summary->getTranslation('summary', 'ar') }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.summary.delete') }}" method="post">
                                                             @csrf

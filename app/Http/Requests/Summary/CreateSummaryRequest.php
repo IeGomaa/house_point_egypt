@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Summary;
 
+use App\Models\Summary;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateSummaryRequest extends FormRequest
@@ -23,8 +24,6 @@ class CreateSummaryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'summary' => 'required|string|max:255'
-        ];
+        return Summary::createRule();
     }
 }

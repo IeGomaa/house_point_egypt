@@ -37,7 +37,10 @@ class SummaryController extends Controller
     public function store(CreateSummaryRequest $request)
     {
         $this->summaryModel::create([
-            'summary' => $request->summary
+            'summary' => [
+                'en' => $request->summary_en,
+                'ar' => $request->summary_ar,
+            ]
         ]);
         Alert::toast('Summary Was Created Successfully', 'success');
         return redirect(route('admin.summary.index'));
@@ -59,7 +62,10 @@ class SummaryController extends Controller
     public function update(UpdateSummaryRequest $request)
     {
         $this->findSummaryById($request->id)->update([
-            'summary' => $request->summary
+            'summary' => [
+                'en' => $request->summary_en,
+                'ar' => $request->summary_ar,
+            ]
         ]);
         Alert::toast('Summary Was Updated Successfully', 'success');
         return redirect(route('admin.summary.index'));
