@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AreaController;
+use App\Http\Controllers\Area\AreaController;
+use App\Http\Controllers\Area\AreaExcelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
@@ -72,6 +73,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
         });
+
+        Route::controller(AreaExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
+        });
     });
 
     Route::group(['prefix' => 'sub-area', 'as' => 'sub-area.'], function () {
@@ -94,9 +101,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
         });
-    });
 
-    Route::group(['prefix' => 'general', 'as' => 'general.'], function () {
         Route::controller(GeneralExcelController::class)->group(function () {
             Route::get('import-page', 'import_page')->name('import-page');
             Route::post('import', 'import')->name('import');
@@ -113,9 +118,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
         });
-    });
 
-    Route::group(['prefix' => 'flooring', 'as' => 'flooring.'], function () {
         Route::controller(FlooringExcelController::class)->group(function () {
             Route::get('import-page', 'import_page')->name('import-page');
             Route::post('import', 'import')->name('import');
@@ -165,9 +168,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
         });
-    });
 
-    Route::group(['prefix' => 'floor', 'as' => 'floor.'], function () {
         Route::controller(FloorExcelController::class)->group(function () {
             Route::get('import-page', 'import_page')->name('import-page');
             Route::post('import', 'import')->name('import');
@@ -184,9 +185,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
         });
-    });
 
-    Route::group(['prefix' => 'furniture', 'as' => 'furniture.'], function () {
         Route::controller(FurnitureExcelController::class)->group(function () {
             Route::get('import-page', 'import_page')->name('import-page');
             Route::post('import', 'import')->name('import');

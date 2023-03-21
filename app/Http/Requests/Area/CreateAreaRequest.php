@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Area;
 
+use App\Models\Area;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateAreaRequest extends FormRequest
@@ -23,8 +24,6 @@ class CreateAreaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string|max:255'
-        ];
+        return Area::createRule();
     }
 }

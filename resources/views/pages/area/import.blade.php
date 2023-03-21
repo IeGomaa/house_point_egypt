@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Area | Create
+    Area | Import
 @endsection
 
 @push('css')
@@ -25,31 +25,20 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Area Create</h4>
+                                        <h4>Area Import</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form action="{{ route('admin.area.store') }}" method="post">
+                                <form action="{{ route('admin.area.import') }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group mb-4">
-                                        <label>Name En</label>
-                                        <input type="text" name="name_en" value="{{ old('name_en') }}" class="@error('name_en') is-invalid @enderror form-control">
+
+                                    <div class="custom-file mb-3">
+                                        <input type="file" name="area" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
 
-                                    @error('name_en')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-
-                                    <div class="form-group mb-4">
-                                        <label>Name Ar</label>
-                                        <input type="text" name="name_ar" value="{{ old('name_ar') }}" class="@error('name_ar') is-invalid @enderror form-control">
-                                    </div>
-
-                                    @error('name_ar')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                    <input type="submit" value="Send" class="mt-4 mb-4 btn btn-primary">
+                                    <input type="submit" value="Upload" class="mt-4 mb-4 btn btn-primary">
                                 </form>
                             </div>
                         </div>

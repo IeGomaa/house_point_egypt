@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.area.create')}}">
                                             <button class="btn btn-primary">Create Area</button>
                                         </a>
+                                        <a href="{{route('admin.area.import-page')}}">
+                                            <button class="btn btn-success">Upload Area Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.area.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +43,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
+                                                <th>Name En</th>
+                                                <th>Name Ar</th>
                                                 <th>Delete</th>
                                                 <th>Edit</th>
                                             </tr>
@@ -46,7 +53,8 @@
                                             @foreach($areas as $key => $area)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $area->name }}</td>
+                                                    <td>{{ $area->getTranslation('name', 'en') }}</td>
+                                                    <td>{{ $area->getTranslation('name', 'ar') }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.area.delete') }}" method="post">
                                                             @csrf

@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Area;
 
-use App\Models\Area;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAreaRequest extends FormRequest
+class AreaImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +23,8 @@ class UpdateAreaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return array_merge(Area::createRule(), [
-            'id' => 'required|integer|exists:areas,id'
-        ]);
+        return [
+            'area' => 'required|file|mimes:xlsx'
+        ];
     }
 }

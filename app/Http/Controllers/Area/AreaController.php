@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Area;
 
-use App\Http\Requests\Area\CreateAreaRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Area\CheckAreaIdRequest;
+use App\Http\Requests\Area\CreateAreaRequest;
 use App\Http\Requests\Area\UpdateAreaRequest;
 use App\Http\Traits\AreaTrait;
 use App\Models\Area;
@@ -32,7 +33,10 @@ class AreaController extends Controller
     public function store(CreateAreaRequest $request)
     {
         $this->areaModel::create([
-            'name' => $request->name
+            'name' => [
+                'en' => $request->name_en,
+                'ar' => $request->name_ar,
+            ]
         ]);
         Alert::toast('Area Was Created Successfully', 'success');
         return redirect(route('admin.area.index'));
@@ -54,7 +58,10 @@ class AreaController extends Controller
     public function update(UpdateAreaRequest $request)
     {
         $this->findAreaById($request->id)->update([
-            'name' => $request->name
+            'name' => [
+                'en' => $request->name_en,
+                'ar' => $request->name_ar,
+            ]
         ]);
         Alert::toast('Area Was Updated Successfully', 'success');
         return redirect(route('admin.area.index'));
