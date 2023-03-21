@@ -31,7 +31,25 @@
                             </div>
                             <div class="widget-content widget-content-area">
                                 <form action="{{ route('admin.furniture.store') }}" method="post">
-                                    @include('pages.furniture._form')
+                                    @csrf
+                                    <div class="form-group mb-4">
+                                        <label>Furniture En</label>
+                                        <input type="text" name="furniture_en" value="{{ old('furniture_en') }}" class="@error('furniture_en') is-invalid @enderror form-control">
+                                    </div>
+
+                                    @error('furniture_en')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="form-group mb-4">
+                                        <label>Furniture Ar</label>
+                                        <input type="text" name="furniture_ar" value="{{ old('furniture_ar') }}" class="@error('furniture_ar') is-invalid @enderror form-control">
+                                    </div>
+
+                                    @error('furniture_ar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
                                     <input type="submit" value="Send" class="mt-4 mb-4 btn btn-primary">
                                 </form>
                             </div>

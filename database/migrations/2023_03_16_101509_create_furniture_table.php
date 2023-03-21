@@ -15,7 +15,7 @@ class CreateFurnitureTable extends Migration
     {
         Schema::create('furniture', function (Blueprint $table) {
             $table->id();
-            $table->string('furniture');
+            $table->json('furniture');
             $table->timestamps();
         });
     }

@@ -20,8 +20,8 @@ class FurnitureController extends Controller
 
     public function index()
     {
-        $furnitures = $this->getFurnitures();
-        return view('pages.furniture.index', compact('furnitures'));
+        $furniture = $this->getFurnitures();
+        return view('pages.furniture.index', compact('furniture'));
     }
 
     public function create()
@@ -32,7 +32,10 @@ class FurnitureController extends Controller
     public function store(CreateFurnitureRequest $request)
     {
         $this->furnitureModel::create([
-            'furniture' => $request->furniture
+            'furniture' => [
+                'en' => $request->furniture_en,
+                'ar' => $request->furniture_ar,
+            ]
         ]);
         Alert::toast('Furniture Num Was Created Successfully', 'success');
         return redirect(route('admin.furniture.index'));
@@ -54,7 +57,10 @@ class FurnitureController extends Controller
     public function update(UpdateFurnitureRequest $request)
     {
         $this->findFurnitureById($request->id)->update([
-            'furniture' => $request->furniture
+            'furniture' => [
+                'en' => $request->furniture_en,
+                'ar' => $request->furniture_ar,
+            ]
         ]);
         Alert::toast('Furniture Num Was Updated Successfully', 'success');
         return redirect(route('admin.furniture.index'));

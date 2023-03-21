@@ -13,8 +13,8 @@ class FlooringExport implements FromView, WithStyles
 
     public function view(): View
     {
-        $floorings = Flooring::get('floor');
-        return view('pages.flooring.export', compact('floorings'));
+        $flooring = Flooring::get('floor');
+        return view('pages.flooring.export', compact('flooring'));
     }
 
     public function styles(Worksheet $sheet)

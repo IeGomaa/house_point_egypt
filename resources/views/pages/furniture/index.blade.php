@@ -37,28 +37,30 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Furniture</th>
+                                                <th>Furniture En</th>
+                                                <th>Furniture Ar</th>
                                                 <th>Delete</th>
                                                 <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($furnitures as $key => $furniture)
+                                            @foreach($furniture as $key => $val)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $furniture->furniture }}</td>
+                                                    <td>{{ $val->getTranslation('furniture', 'en') }}</td>
+                                                    <td>{{ $val->getTranslation('furniture', 'ar') }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.furniture.delete') }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $furniture->id }}">
+                                                            <input type="hidden" name="id" value="{{ $val->id }}">
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
                                                     <td>
                                                         <form action="{{ route('admin.furniture.edit') }}" method="post">
                                                             @csrf
-                                                            <input type="hidden" name="id" value="{{ $furniture->id }}">
+                                                            <input type="hidden" name="id" value="{{ $val->id }}">
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>

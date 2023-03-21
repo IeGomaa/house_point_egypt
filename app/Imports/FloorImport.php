@@ -17,7 +17,10 @@ class FloorImport implements ToModel, WithHeadingRow, WithValidation
     public function model(array $row)
     {
         return new Floor([
-            'number' => $row['number']
+            'number' => [
+                'en' => $row['number_en'],
+                'ar' => $row['number_ar'],
+            ]
         ]);
     }
 

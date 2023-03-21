@@ -17,7 +17,10 @@ class FlooringImport implements ToModel, WithHeadingRow, WithValidation
     public function model(array $row)
     {
         return new Flooring([
-            'floor' => $row['floor']
+            'floor' => [
+                'en' => $row['floor_en'],
+                'ar' => $row['floor_ar']
+            ]
         ]);
     }
 

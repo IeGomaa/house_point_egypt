@@ -33,7 +33,10 @@ class FlooringController extends Controller
     public function store(CreateFlooringRequest $request)
     {
         $this->flooringModel::create([
-            'floor' => $request->floor
+            'floor' => [
+                'en' => $request->floor_en,
+                'ar' => $request->floor_ar,
+            ]
         ]);
         Alert::toast('Flooring Was Created Successfully', 'success');
         return redirect(route('admin.flooring.index'));
@@ -55,7 +58,10 @@ class FlooringController extends Controller
     public function update(UpdateFlooringRequest $request)
     {
         $this->findFlooringById($request->id)->update([
-            'floor' => $request->floor
+            'floor' => [
+                'en' => $request->floor_en,
+                'ar' => $request->floor_ar,
+            ]
         ]);
         Alert::toast('Flooring Was Updated Successfully', 'success');
         return redirect(route('admin.flooring.index'));

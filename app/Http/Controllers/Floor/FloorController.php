@@ -33,7 +33,10 @@ class FloorController extends Controller
     public function store(CreateFloorRequest $request)
     {
         $this->floorModel::create([
-            'number' => $request->number
+            'number' => [
+                'en' => $request->number_en,
+                'ar' => $request->number_ar
+            ]
         ]);
         Alert::toast('Floor Number Was Create Successfully', 'success');
         return redirect(route('admin.floor.index'));
@@ -55,7 +58,10 @@ class FloorController extends Controller
     public function update(UpdateFloorRequest $request)
     {
         $this->findFloorById($request->id)->update([
-            'number' => $request->number
+            'number' => [
+                'en' => $request->number_en,
+                'ar' => $request->number_ar
+            ]
         ]);
         Alert::toast('Floor Number Was Updated Successfully', 'success');
         return redirect(route('admin.floor.index'));

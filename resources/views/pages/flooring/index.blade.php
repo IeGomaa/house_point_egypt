@@ -43,7 +43,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
+                                                <th>Floor En</th>
+                                                <th>Floor Ar</th>
                                                 <th>Delete</th>
                                                 <th>Edit</th>
                                             </tr>
@@ -52,7 +53,8 @@
                                             @foreach($flooring as $key => $val)
                                                 <tr>
                                                     <td>{{ ++$key }}</td>
-                                                    <td>{{ $val->floor }}</td>
+                                                    <td>{{ $val->getTranslation('floor', 'en') }}</td>
+                                                    <td>{{ $val->getTranslation('floor', 'ar') }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.flooring.delete') }}" method="post">
                                                             @csrf
