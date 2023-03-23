@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Summary;
 
-use App\Http\Requests\Area\CreateAreaRequest;
-use App\Http\Requests\Area\CheckAreaIdRequest;
-use App\Http\Requests\Area\UpdateAreaRequest;
-use App\Http\Requests\Summary\CreateSummaryRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Summary\CheckSummaryIdRequest;
+use App\Http\Requests\Summary\CreateSummaryRequest;
 use App\Http\Requests\Summary\UpdateSummaryRequest;
-use App\Http\Traits\AreaTrait;
 use App\Http\Traits\SummaryTrait;
-use App\Models\Area;
 use App\Models\Summary;
 use RealRashid\SweetAlert\Facades\Alert;
 

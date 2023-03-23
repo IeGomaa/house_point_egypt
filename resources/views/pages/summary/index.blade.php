@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.summary.create')}}">
                                             <button class="btn btn-primary">Create Summary</button>
                                         </a>
+                                        <a href="{{route('admin.summary.import-page')}}">
+                                            <button class="btn btn-success">Upload Summary Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.summary.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

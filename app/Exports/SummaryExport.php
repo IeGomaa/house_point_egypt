@@ -2,19 +2,18 @@
 
 namespace App\Exports;
 
-use App\Models\General;
+use App\Models\Summary;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class GeneralExport implements FromView, WithStyles
+class SummaryExport implements FromView, WithStyles
 {
-
     public function view(): View
     {
-        $generals = General::get('name');
-        return view('pages.general.export', compact('generals'));
+        $summaries = Summary::get('summary');
+        return view('pages.summary.export', compact('summaries'));
     }
 
     public function styles(Worksheet $sheet): array

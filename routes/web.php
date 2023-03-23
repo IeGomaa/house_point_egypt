@@ -19,7 +19,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Property_Type\PropertyTypeController;
 use App\Http\Controllers\Property_Type\PropertyTypeExcelController;
 use App\Http\Controllers\Sub_Area\SubAreaController;
-use App\Http\Controllers\SummaryController;
+use App\Http\Controllers\Summary\SummaryController;
+use App\Http\Controllers\Summary\SummaryExcelController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -153,6 +154,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::delete('delete', 'delete')->name('delete');
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
+        });
+
+        Route::controller(SummaryExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
         });
     });
 
