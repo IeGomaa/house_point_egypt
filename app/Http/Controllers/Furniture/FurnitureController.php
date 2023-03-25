@@ -21,7 +21,7 @@ class FurnitureController extends Controller
 
     public function index()
     {
-        $furniture = $this->getFurnitures();
+        $furniture = $this->getFurniture();
         return view('pages.furniture.index', compact('furniture'));
     }
 

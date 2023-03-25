@@ -16,6 +16,7 @@ use App\Http\Controllers\Furniture\FurnitureExcelController;
 use App\Http\Controllers\General\GeneralController;
 use App\Http\Controllers\General\GeneralExcelController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Property\PropertyController;
 use App\Http\Controllers\Property_Type\PropertyTypeController;
 use App\Http\Controllers\Property_Type\PropertyTypeExcelController;
 use App\Http\Controllers\Sub_Area\SubAreaController;
@@ -99,6 +100,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::post('import', 'import')->name('import');
             Route::get('export', 'export')->name('export');
         });
+    });
+
+    Route::group(['prefix' => 'property', 'as' => 'property.'], function () {
+        Route::controller(PropertyController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+
+//        Route::controller(PropertyExcelController::class)->group(function () {
+//            Route::get('import-page', 'import_page')->name('import-page');
+//            Route::post('import', 'import')->name('import');
+//            Route::get('export', 'export')->name('export');
+//        });
     });
 
     Route::group(['prefix' => 'sub-area', 'as' => 'sub-area.'], function () {

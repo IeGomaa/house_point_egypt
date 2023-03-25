@@ -4,7 +4,7 @@ namespace App\Http\Traits;
 
 trait FurnitureTrait
 {
-    private function getFurnitures()
+    private function getFurniture()
     {
         return $this->furnitureModel::get();
     }
