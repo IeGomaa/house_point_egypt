@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Property;
+use App\Models\PropertyFlooring;
 use App\Models\PropertyGeneral;
 use App\Models\PropertySummary;
 
@@ -30,6 +31,15 @@ class PropertyObserver
                 PropertyGeneral::create([
                     'property_id' => $property->id,
                     'general_id' => $general_id
+                ]);
+            }
+        }
+
+        if (request()->has('flooring')) {
+            foreach (request('flooring') as $flooring_id) {
+                PropertyFlooring::create([
+                    'property_id' => $property->id,
+                    'flooring_id' => $flooring_id
                 ]);
             }
         }

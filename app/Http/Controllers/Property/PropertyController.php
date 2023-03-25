@@ -7,6 +7,7 @@ use App\Http\Requests\Property\CheckPropertyIdRequest;
 use App\Http\Requests\Property\CreatePropertyRequest;
 use App\Http\Requests\Property\UpdatePropertyRequest;
 use App\Http\Traits\AreaTrait;
+use App\Http\Traits\FlooringTrait;
 use App\Http\Traits\FloorTrait;
 use App\Http\Traits\FurnitureTrait;
 use App\Http\Traits\GeneralTrait;
@@ -16,6 +17,7 @@ use App\Http\Traits\SubAreaTrait;
 use App\Http\Traits\SummaryTrait;
 use App\Models\Area;
 use App\Models\Floor;
+use App\Models\Flooring;
 use App\Models\Furniture;
 use App\Models\General;
 use App\Models\Property;
@@ -35,8 +37,9 @@ class PropertyController extends Controller
     private $furnitureModel;
     private $summaryModel;
     private $generalModel;
-    use PropertyTrait, AreaTrait, SubAreaTrait, PropertyTypeTrait, FloorTrait, FurnitureTrait, SummaryTrait, GeneralTrait;
-    public function __construct(Property $property, Area $area, SubArea $subArea, PropertyType $propertyType, Floor $floor, Furniture $furniture, Summary $summary, General $general)
+    private $flooringModel;
+    use PropertyTrait, AreaTrait, SubAreaTrait, PropertyTypeTrait, FloorTrait, FurnitureTrait, SummaryTrait, GeneralTrait, FlooringTrait;
+    public function __construct(Property $property, Area $area, SubArea $subArea, PropertyType $propertyType, Floor $floor, Furniture $furniture, Summary $summary, General $general, Flooring $flooring)
     {
         $this->propertyModel = $property;
         $this->propertyTypeModel = $propertyType;
@@ -46,6 +49,7 @@ class PropertyController extends Controller
         $this->furnitureModel = $furniture;
         $this->summaryModel = $summary;
         $this->generalModel = $general;
+        $this->flooringModel = $flooring;
     }
 
     public function index()
@@ -63,7 +67,8 @@ class PropertyController extends Controller
         $furniture = $this->getFurniture();
         $summaries = $this->getSummaries();
         $generals = $this->getGenerals();
-        return view('pages.property.create', compact('areas', 'sub_areas', 'property_types', 'floors', 'furniture', 'summaries', 'generals'));
+        $flooring = $this->getFloorings();
+        return view('pages.property.create', compact('areas', 'sub_areas', 'property_types', 'floors', 'furniture', 'summaries', 'generals', 'flooring'));
     }
 
     public function store(CreatePropertyRequest $request)
@@ -115,9 +120,10 @@ class PropertyController extends Controller
         $property_types = $this->getPropertyTypes();
         $floors = $this->getFloors();
         $furniture = $this->getFurniture();
-        $summaries = $this->getSummaries();
         $generals = $this->getGenerals();
-        return view('pages.property.edit', compact('property', 'areas', 'sub_areas', 'property_types', 'floors', 'furniture', 'summaries', 'generals'));
+        $summaries = $this->getSummaries();
+        $flooring = $this->getFloorings();
+        return view('pages.property.edit', compact('property', 'areas', 'sub_areas', 'property_types', 'floors', 'furniture', 'summaries', 'generals', 'flooring'));
     }
 
     public function update(UpdatePropertyRequest $request)

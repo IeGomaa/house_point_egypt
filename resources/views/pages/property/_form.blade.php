@@ -292,3 +292,27 @@
         </div>
     </div>
 </div>
+
+<div class="col-xl-12 col-12 layout-spacing">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <h4>Flooring</h4>
+                </div>
+            </div>
+        </div>
+        <div class="widget-content widget-content-area">
+
+            @foreach($flooring as $val)
+                <div class="n-chk">
+                    <label class="new-control new-checkbox new-checkbox-rounded checkbox-primary">
+                        <input type="checkbox" name="flooring[]" value="{{ $val->id }}" class="new-control-input">
+                        <span class="new-control-indicator"></span>{{ $val->getTranslation('floor', 'en') }}
+                    </label>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+</div>
