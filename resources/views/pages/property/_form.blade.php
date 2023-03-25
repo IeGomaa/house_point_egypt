@@ -244,3 +244,51 @@
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 </div>
+
+<div class="col-xl-12 col-12 layout-spacing">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <h4>Summary</h4>
+                </div>
+            </div>
+        </div>
+        <div class="widget-content widget-content-area">
+
+            @foreach($summaries as $summary)
+                <div class="n-chk">
+                    <label class="new-control new-checkbox new-checkbox-rounded checkbox-primary">
+                        <input type="checkbox" name="summary[]" value="{{ $summary->getTranslation('summary', 'en') }}" class="new-control-input">
+                        <span class="new-control-indicator"></span>{{ $summary->getTranslation('summary', 'en') }}
+                    </label>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12 col-12 layout-spacing">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-header">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                    <h4>General</h4>
+                </div>
+            </div>
+        </div>
+        <div class="widget-content widget-content-area">
+
+            @foreach($generals as $general)
+                <div class="n-chk">
+                    <label class="new-control new-checkbox new-checkbox-rounded checkbox-primary">
+                        <input type="checkbox" name="general[]" value="{{ $general->name }}" class="new-control-input">
+                        <span class="new-control-indicator"></span>{{ $general->name }}
+                    </label>
+                </div>
+            @endforeach
+
+        </div>
+    </div>
+</div>

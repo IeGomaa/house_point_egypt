@@ -7,6 +7,7 @@
 @push('css')
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ asset('dashboard/assets/css/scrollspyNav.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/forms/theme-checkbox-radio.css') }}">
     <!--  END CUSTOM STYLE FILE  -->
 @endpush
 
@@ -276,6 +277,54 @@
                                         @error('furniture')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+                                    </div>
+
+                                    <div class="col-xl-12 col-12 layout-spacing">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-header">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                        <h4>Summary</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content widget-content-area">
+
+                                                @foreach($summaries as $summary)
+                                                    <div class="n-chk">
+                                                        <label class="new-control new-checkbox new-checkbox-rounded checkbox-primary">
+                                                            <input type="checkbox" name="summary[]" value="{{ $summary->id }}" class="new-control-input">
+                                                            <span class="new-control-indicator"></span>{{ $summary->getTranslation('summary', 'en') }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-12 col-12 layout-spacing">
+                                        <div class="statbox widget box box-shadow">
+                                            <div class="widget-header">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                        <h4>General</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content widget-content-area">
+
+                                                @foreach($generals as $general)
+                                                    <div class="n-chk">
+                                                        <label class="new-control new-checkbox new-checkbox-rounded checkbox-primary">
+                                                            <input type="checkbox" name="general[]" value="{{ $general->id }}" class="new-control-input">
+                                                            <span class="new-control-indicator"></span>{{ $general->name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <input type="submit" value="Send" class="mt-4 mb-4 btn btn-primary">

@@ -7,6 +7,7 @@
 @push('css')
     <!--  BEGIN CUSTOM STYLE FILE  -->
     <link href="{{ asset('dashboard/assets/css/scrollspyNav.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/css/forms/theme-checkbox-radio.css') }}">
     <!--  END CUSTOM STYLE FILE  -->
 @endpush
 
