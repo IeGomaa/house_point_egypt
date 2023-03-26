@@ -19,6 +19,7 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Property\PropertyController;
 use App\Http\Controllers\Property_Flooring\PropertyFlooringController;
 use App\Http\Controllers\Property_General\PropertyGeneralController;
+use App\Http\Controllers\Property_Image\PropertyImageController;
 use App\Http\Controllers\Property_Summary\PropertySummaryController;
 use App\Http\Controllers\Property_Type\PropertyTypeController;
 use App\Http\Controllers\Property_Type\PropertyTypeExcelController;
@@ -171,6 +172,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 //            Route::post('import', 'import')->name('import');
 //            Route::get('export', 'export')->name('export');
 //        });
+    });
+
+    Route::group(['prefix' => 'property-image', 'as' => 'property-image.'], function () {
+        Route::controller(PropertyImageController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
     });
 
     Route::group(['prefix' => 'sub-area', 'as' => 'sub-area.'], function () {

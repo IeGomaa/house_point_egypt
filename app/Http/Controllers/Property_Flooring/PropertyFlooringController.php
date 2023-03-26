@@ -29,14 +29,14 @@ class PropertyFlooringController extends Controller
 
     public function index()
     {
-        $property_flooring = $this->propertyFlooringModel::with(['property', 'flooring'])->get();
+        $property_flooring = $this->getPropertyFlooring();
         return view('pages.property_flooring.index', compact('property_flooring'));
     }
 
     public function create()
     {
-        $properties = $this->propertyModel::get();
-        $flooring = $this->flooringModel::get();
+        $properties = $this->getProperties();
+        $flooring = $this->getFloorings();
         return view('pages.property_flooring.create', compact('properties', 'flooring'));
     }
 
@@ -51,21 +51,21 @@ class PropertyFlooringController extends Controller
 
     public function delete(CheckPropertyFlooringIdRequest $request): RedirectResponse
     {
-        $this->propertyFlooringModel::find($request->id)->delete();
+        $this->findPropertyFlooringById($request->id)->delete();
         return back();
     }
 
     public function edit(CheckPropertyFlooringIdRequest $request)
     {
-        $properties = $this->propertyModel::get();
-        $flooring = $this->flooringModel::get();
-        $property_flooring = $this->propertyFlooringModel::find($request->id);
+        $properties = $this->getProperties();
+        $flooring = $this->getFloorings();
+        $property_flooring = $this->findPropertyFlooringById($request->id);
         return view('pages.property_flooring.edit', compact('property_flooring', 'properties', 'flooring'));
     }
 
     public function update(UpdatePropertyFlooringRequest $request)
     {
-        $this->propertyFlooringModel::find($request->id)->update([
+        $this->findPropertyFlooringById($request->id)->update([
             'property_id' => $request->property_id,
             'flooring_id' => $request->flooring_id
         ]);

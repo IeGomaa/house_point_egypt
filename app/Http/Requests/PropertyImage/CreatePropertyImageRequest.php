@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Property;
+namespace App\Http\Requests\PropertyImage;
 
-use App\Models\Property;
+use App\Models\PropertyFlooring;
+use App\Models\PropertyImage;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePropertyRequest extends FormRequest
+class CreatePropertyImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +25,6 @@ class CreatePropertyRequest extends FormRequest
      */
     public function rules(): array
     {
-        return array_merge(Property::createRule(), [
-            'summary' => 'required|array',
-            'flooring' => 'required|array',
-            'general' => 'required|array',
-            'image' => 'required|array'
-        ]);
+        return PropertyImage::createRule();
     }
 }

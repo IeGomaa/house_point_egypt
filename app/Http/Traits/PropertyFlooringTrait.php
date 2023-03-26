@@ -6,7 +6,7 @@ trait PropertyFlooringTrait
 {
     private function getPropertyFlooring()
     {
-        return $this->propertyFlooringModel::get();
+        return $this->propertyFlooringModel::with(['property', 'flooring'])->get();
     }
 
     private function findPropertyFlooringById($id)

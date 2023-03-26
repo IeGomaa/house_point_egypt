@@ -6,7 +6,7 @@ trait PropertySummaryTrait
 {
     private function getPropertySummaries()
     {
-        return $this->propertySummaryModel::get();
+        return $this->propertySummaryModel::with(['property', 'summary'])->get();
     }
 
     private function findPropertySummaryById($id)

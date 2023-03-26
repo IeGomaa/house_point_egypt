@@ -6,7 +6,7 @@ trait PropertyGeneralTrait
 {
     private function getPropertyGenerals()
     {
-        return $this->propertyGeneralModel::get();
+        return $this->propertyGeneralModel::with(['property', 'general'])->get();
     }
 
     private function findPropertyGeneralById($id)

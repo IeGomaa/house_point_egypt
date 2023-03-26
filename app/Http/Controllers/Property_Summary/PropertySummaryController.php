@@ -29,14 +29,14 @@ class PropertySummaryController extends Controller
 
     public function index()
     {
-        $property_summaries = $this->propertySummaryModel::with(['property', 'summary'])->get();
+        $property_summaries = $this->getPropertySummaries();
         return view('pages.property_summary.index', compact('property_summaries'));
     }
 
     public function create()
     {
-        $properties = $this->propertyModel::get();
-        $summaries = $this->summaryModel::get();
+        $properties = $this->getProperties();
+        $summaries = $this->getSummaries();
         return view('pages.property_summary.create', compact('properties', 'summaries'));
     }
 
@@ -51,21 +51,21 @@ class PropertySummaryController extends Controller
 
     public function delete(CheckPropertySummaryIdRequest $request): RedirectResponse
     {
-        $this->propertySummaryModel::find($request->id)->delete();
+        $this->findPropertySummaryById($request->id)->delete();
         return back();
     }
 
     public function edit(CheckPropertySummaryIdRequest $request)
     {
-        $properties = $this->propertyModel::get();
-        $summaries = $this->summaryModel::get();
-        $property_summary = $this->propertySummaryModel::find($request->id);
+        $properties = $this->getProperties();
+        $summaries = $this->getSummaries();
+        $property_summary = $this->findPropertySummaryById($request->id);
         return view('pages.property_summary.edit', compact('property_summary', 'properties', 'summaries'));
     }
 
     public function update(UpdatePropertySummaryRequest $request)
     {
-        $this->propertySummaryModel::find($request->id)->update([
+        $this->findPropertySummaryById($request->id)->update([
             'property_id' => $request->property_id,
             'summary_id' => $request->summary_id
         ]);

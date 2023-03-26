@@ -2,13 +2,21 @@
 
 namespace App\Observers;
 
+use App\Http\Services\PropertyImage\PropertyImageUploadImageService;
 use App\Models\Property;
 use App\Models\PropertyFlooring;
 use App\Models\PropertyGeneral;
+use App\Models\PropertyImage;
 use App\Models\PropertySummary;
 
 class PropertyObserver
 {
+    private $service;
+    public function __construct(PropertyImageUploadImageService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Handle the Property "created" event.
      *
@@ -40,6 +48,16 @@ class PropertyObserver
                 PropertyFlooring::create([
                     'property_id' => $property->id,
                     'flooring_id' => $flooring_id
+                ]);
+            }
+        }
+
+        if (request()->has('image')) {
+            for ($i = 0 ,$count = count(request('image')); $i < $count; $i++) {
+                $imageName = $this->service->uploadImage(request('image')[$i], $i);
+                PropertyImage::create([
+                    'property_id' => $property->id,
+                    'image' => $imageName
                 ]);
             }
         }
