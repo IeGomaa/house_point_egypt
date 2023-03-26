@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Country;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Country\CheckCountryIdRequest;
 use App\Http\Requests\Country\CreateCountryRequest;
 use App\Http\Requests\Country\UpdateCountryRequest;

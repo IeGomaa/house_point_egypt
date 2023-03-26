@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Http\Requests\User\DeleteUserRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\DeleteUserRequest;
 use App\Http\Traits\UserTrait;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;

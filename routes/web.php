@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\Area\AreaController;
 use App\Http\Controllers\Area\AreaExcelController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\ErrorController;
+use App\Http\Controllers\Authentication\AuthController;
+use App\Http\Controllers\Blog\BlogController;
+use App\Http\Controllers\Contact\ContactController;
+use App\Http\Controllers\Country\CountryController;
+use App\Http\Controllers\Error\ErrorController;
 use App\Http\Controllers\Floor\FloorController;
 use App\Http\Controllers\Floor\FloorExcelController;
 use App\Http\Controllers\Flooring\FlooringController;
@@ -15,14 +15,17 @@ use App\Http\Controllers\Furniture\FurnitureController;
 use App\Http\Controllers\Furniture\FurnitureExcelController;
 use App\Http\Controllers\General\GeneralController;
 use App\Http\Controllers\General\GeneralExcelController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Property\PropertyController;
+use App\Http\Controllers\Property_Flooring\PropertyFlooringController;
+use App\Http\Controllers\Property_General\PropertyGeneralController;
+use App\Http\Controllers\Property_Summary\PropertySummaryController;
 use App\Http\Controllers\Property_Type\PropertyTypeController;
 use App\Http\Controllers\Property_Type\PropertyTypeExcelController;
 use App\Http\Controllers\Sub_Area\SubAreaController;
 use App\Http\Controllers\Summary\SummaryController;
 use App\Http\Controllers\Summary\SummaryExcelController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -113,6 +116,57 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
         });
 
 //        Route::controller(PropertyExcelController::class)->group(function () {
+//            Route::get('import-page', 'import_page')->name('import-page');
+//            Route::post('import', 'import')->name('import');
+//            Route::get('export', 'export')->name('export');
+//        });
+    });
+
+    Route::group(['prefix' => 'property-flooring', 'as' => 'property-flooring.'], function () {
+        Route::controller(PropertyFlooringController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+
+//        Route::controller(PropertyFlooringExcelController::class)->group(function () {
+//            Route::get('import-page', 'import_page')->name('import-page');
+//            Route::post('import', 'import')->name('import');
+//            Route::get('export', 'export')->name('export');
+//        });
+    });
+
+    Route::group(['prefix' => 'property-summary', 'as' => 'property-summary.'], function () {
+        Route::controller(PropertySummaryController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+
+//        Route::controller(PropertySummaryExcelController::class)->group(function () {
+//            Route::get('import-page', 'import_page')->name('import-page');
+//            Route::post('import', 'import')->name('import');
+//            Route::get('export', 'export')->name('export');
+//        });
+    });
+
+    Route::group(['prefix' => 'property-general', 'as' => 'property-general.'], function () {
+        Route::controller(PropertyGeneralController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+
+//        Route::controller(PropertyGeneralExcelController::class)->group(function () {
 //            Route::get('import-page', 'import_page')->name('import-page');
 //            Route::post('import', 'import')->name('import');
 //            Route::get('export', 'export')->name('export');

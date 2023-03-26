@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contact;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\DeleteContactRequest;
 use App\Http\Traits\ContactTrait;
 use App\Models\Contact;

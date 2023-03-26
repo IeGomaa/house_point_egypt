@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
-use App\Http\Requests\Blog\CreateBlogRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\CheckBlogIdRequest;
+use App\Http\Requests\Blog\CreateBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Http\Services\Blog\BlogCheckImageService;
 use App\Http\Services\Blog\BlogDeleteImageService;
