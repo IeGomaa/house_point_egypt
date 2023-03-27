@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.property-summary.create')}}">
                                             <button class="btn btn-primary">Create Property Summary</button>
                                         </a>
+                                        <a href="{{route('admin.property-summary.import-page')}}">
+                                            <button class="btn btn-success">Upload Property Summary Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.property-summary.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

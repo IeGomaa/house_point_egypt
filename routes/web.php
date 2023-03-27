@@ -20,9 +20,12 @@ use App\Http\Controllers\Link\LinkController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Property\PropertyController;
 use App\Http\Controllers\Property_Flooring\PropertyFlooringController;
+use App\Http\Controllers\Property_Flooring\PropertyFlooringExcelController;
 use App\Http\Controllers\Property_General\PropertyGeneralController;
+use App\Http\Controllers\Property_General\PropertyGeneralExcelController;
 use App\Http\Controllers\Property_Image\PropertyImageController;
 use App\Http\Controllers\Property_Summary\PropertySummaryController;
+use App\Http\Controllers\Property_Summary\PropertySummaryExcelController;
 use App\Http\Controllers\Property_Type\PropertyTypeController;
 use App\Http\Controllers\Property_Type\PropertyTypeExcelController;
 use App\Http\Controllers\Sub_Area\SubAreaController;
@@ -131,11 +134,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::put('update', 'update')->name('update');
         });
 
-//        Route::controller(PropertyFlooringExcelController::class)->group(function () {
-//            Route::get('import-page', 'import_page')->name('import-page');
-//            Route::post('import', 'import')->name('import');
-//            Route::get('export', 'export')->name('export');
-//        });
+        Route::controller(PropertyFlooringExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
+        });
     });
 
     Route::group(['prefix' => 'property-summary', 'as' => 'property-summary.'], function () {
@@ -148,11 +151,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::put('update', 'update')->name('update');
         });
 
-//        Route::controller(PropertySummaryExcelController::class)->group(function () {
-//            Route::get('import-page', 'import_page')->name('import-page');
-//            Route::post('import', 'import')->name('import');
-//            Route::get('export', 'export')->name('export');
-//        });
+        Route::controller(PropertySummaryExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
+        });
     });
 
     Route::group(['prefix' => 'property-general', 'as' => 'property-general.'], function () {
@@ -165,11 +168,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::put('update', 'update')->name('update');
         });
 
-//        Route::controller(PropertyGeneralExcelController::class)->group(function () {
-//            Route::get('import-page', 'import_page')->name('import-page');
-//            Route::post('import', 'import')->name('import');
-//            Route::get('export', 'export')->name('export');
-//        });
+        Route::controller(PropertyGeneralExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
+        });
     });
 
     Route::group(['prefix' => 'property-image', 'as' => 'property-image.'], function () {
