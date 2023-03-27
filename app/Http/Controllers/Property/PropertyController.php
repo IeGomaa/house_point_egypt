@@ -92,6 +92,10 @@ class PropertyController extends Controller
             'owner_address' => $request->owner_address,
             'video' => $request->video ?? '',
             'rate' => $request->rate,
+            'tag' => [
+                'en' => $request->tag_en ?? '',
+                'ar' => $request->tag_ar ?? '',
+            ],
             'rate_number' => $request->rate_number,
             'views' => $request->views,
             'user_id' => auth()->user()->id,
@@ -148,6 +152,10 @@ class PropertyController extends Controller
             'owner_address' => $request->owner_address,
             'video' => $request->video ?? $property->video,
             'rate' => $request->rate,
+            'tag' => [
+                'en' => $request->tag_en ?? $property->tag_en,
+                'ar' => $request->tag_ar ?? $property->tag_ar,
+            ],
             'rate_number' => $request->rate_number,
             'views' => $request->views,
             'user_id' => auth()->user()->id,

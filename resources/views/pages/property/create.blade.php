@@ -51,6 +51,22 @@
                                     @enderror
 
                                     <div class="form-group mb-4">
+                                        <label>Tag En</label>
+                                        <input type="text" name="tag_en" value="{{ old('tag_en') }}" class="@error('tag_en') is-invalid @enderror form-control">
+                                    </div>
+                                    @error('tag_en')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="form-group mb-4">
+                                        <label>Tag ar</label>
+                                        <input type="text" name="tag_ar" value="{{ old('tag_ar') }}" class="@error('tag_ar') is-invalid @enderror form-control">
+                                    </div>
+                                    @error('tag_ar')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="form-group mb-4">
                                         <label>Price</label>
                                         <input type="text" name="price" value="{{ old('price') }}" class="@error('price') is-invalid @enderror form-control">
                                     </div>

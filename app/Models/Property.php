@@ -13,6 +13,7 @@ class Property extends Model
     protected $fillable = [
         'property',
         'price',
+        'tag',
         'surface_area',
         'title',
         'status',
@@ -36,7 +37,7 @@ class Property extends Model
         'furniture_id'
     ];
 
-    public $translatable = ['title'];
+    public $translatable = ['title', 'tag'];
 
     public static function createRule(): array
     {
@@ -56,6 +57,8 @@ class Property extends Model
             'owner_phone' => 'required|numeric',
             'owner_address' => 'required|string|max:255',
             'video' => 'url',
+            'tag_en' => 'string',
+            'tag_ar' => 'string',
             'rate' => 'required|numeric',
             'rate_number' => 'required|integer',
             'views' => 'required|numeric',

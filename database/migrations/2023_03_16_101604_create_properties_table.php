@@ -29,6 +29,7 @@ class CreatePropertiesTable extends Migration
             $table->string('owner_phone');
             $table->string('owner_address');
             $table->text('video');
+            $table->json('tag');
             $table->unsignedSmallInteger('rate');
             $table->unsignedInteger('rate_number');
             $table->unsignedInteger('views');
