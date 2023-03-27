@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.country.create')}}">
                                             <button class="btn btn-primary">Create Country</button>
                                         </a>
+                                        <a href="{{route('admin.country.import-page')}}">
+                                            <button class="btn btn-success">Upload Country Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.country.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

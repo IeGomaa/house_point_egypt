@@ -24,7 +24,7 @@ class PropertyGeneralImportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'property_general' => 'file|mimes:xlsx'
+            'property_general' => 'required|file|mimes:xlsx'
         ];
     }
 }

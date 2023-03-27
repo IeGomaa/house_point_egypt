@@ -20,8 +20,8 @@ class Country extends Model
         return [
             'name' => 'required|string|max:255',
             'iso' => 'required|string|max:255',
-            'country_code' => 'required|string|max:255',
-            'phone_code' => 'required|string|max:255'
+            'country_code' => 'required|integer',
+            'phone_code' => 'required|integer'
         ];
     }
 }

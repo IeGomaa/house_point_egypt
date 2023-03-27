@@ -6,6 +6,7 @@ use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\Country\CountryController;
+use App\Http\Controllers\Country\CountryExcelController;
 use App\Http\Controllers\Floor\FloorController;
 use App\Http\Controllers\Floor\FloorExcelController;
 use App\Http\Controllers\Flooring\FlooringController;
@@ -296,6 +297,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::delete('delete', 'delete')->name('delete');
             Route::post('edit', 'edit')->name('edit');
             Route::put('update', 'update')->name('update');
+        });
+
+        Route::controller(CountryExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
         });
     });
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PropertyFlooringImportRequest extends FormRequest
+class CountryImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class PropertyFlooringImportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'property_flooring' => 'required|file|mimes:xlsx'
+            'country' => 'required|file|mimes:xlsx'
         ];
     }
 }

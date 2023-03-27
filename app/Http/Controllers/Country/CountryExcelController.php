@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers\Country;
+
+use App\Exports\CountryExport;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CountryImportRequest;
+use App\Imports\CountryImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
+class CountryExcelController extends Controller
+{
+    public function import_page()
+    {
+        return view('pages.country.import');
+    }
+
+    public function import(CountryImportRequest $request)
+    {
+        Excel::import(new CountryImport, $request->country);
+        return redirect(route('admin.country.index'));
+    }
+
+    public function export(): BinaryFileResponse
+    {
+        return Excel::download(new CountryExport, 'country.xlsx');
+    }
+}
