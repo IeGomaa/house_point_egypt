@@ -45,9 +45,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($subAreas as $key => $subArea)
+                                            @foreach($subAreas as $subArea)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $subArea->id }}</td>
                                                     <td>{{ $subArea->getTranslation('name', 'en') }}</td>
                                                     <td>{{ $subArea->getTranslation('name', 'ar') }}</td>
                                                     <td>{{ $subArea->area->name }}</td>

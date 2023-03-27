@@ -1,4 +1,4 @@
-$('.search > input').on('keyup', function() {
+$('.owner > input').on('keyup', function() {
   var rex = new RegExp($(this).val(), 'i');
     $('.nav .nav-item').hide();
     $('.nav .nav-item').filter(function() {

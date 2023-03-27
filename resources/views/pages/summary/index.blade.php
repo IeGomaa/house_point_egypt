@@ -50,9 +50,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($summaries as $key => $summary)
+                                            @foreach($summaries as $summary)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $summary->id }}</td>
                                                     <td>{{ $summary->getTranslation('summary', 'en') }}</td>
                                                     <td>{{ $summary->getTranslation('summary', 'ar') }}</td>
                                                     <td>

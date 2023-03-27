@@ -42,9 +42,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($contacts as $key => $contact)
+                                            @foreach($contacts as $contact)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $contact->id }}</td>
                                                     <td>{{ $contact->name }}</td>
                                                     <td>{{ $contact->email }}</td>
                                                     <td>{{ $contact->phone }}</td>

@@ -44,9 +44,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($property_images as $key => $val)
+                                            @foreach($property_images as $val)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $val->id }}</td>
                                                     <td>{{ $val->property->getTranslation('title', 'en') }}</td>
                                                     <td>
                                                         <img width="50" src="{{ asset($val->image) }}" alt="property image">

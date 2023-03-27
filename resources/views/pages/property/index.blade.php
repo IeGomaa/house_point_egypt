@@ -48,9 +48,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($properties as $key => $property)
+                                            @foreach($properties as $property)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $property->id }}</td>
                                                     <td>{{ $property->getTranslation('title', 'en') }}</td>
                                                     <td>{{ $property->getTranslation('title', 'ar') }}</td>
                                                     <td>{{ $property->property }}</td>

@@ -50,9 +50,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($furniture as $key => $val)
+                                            @foreach($furniture as $val)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $val->id }}</td>
                                                     <td>{{ $val->getTranslation('furniture', 'en') }}</td>
                                                     <td>{{ $val->getTranslation('furniture', 'ar') }}</td>
                                                     <td>

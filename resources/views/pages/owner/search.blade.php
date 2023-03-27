@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    User | Index
+    Owner | Data
 @endsection
 
 @push('css')
@@ -24,10 +24,7 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>User Table</h4>
-                                        <a href="{{route('admin.user.create')}}">
-                                            <button class="btn btn-primary">Create User</button>
-                                        </a>
+                                        <h4>Owner Data</h4>
                                     </div>
                                 </div>
                             </div>
@@ -35,29 +32,18 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover mb-4">
                                         <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Delete</th>
-                                            </tr>
+                                        <tr>
+                                            <th>Owner Name</th>
+                                            <th>Owner Phone</th>
+                                            <th>Owner Address</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($users as $user)
-                                                <tr>
-                                                    <td>{{ $user->id }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td>
-                                                        <form action="{{ route('admin.user.delete') }}" method="post">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $user->id }}">
-                                                            <input type="submit" value="Delete" class="btn btn-danger">
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                            <tr>
+                                                <td>{{ $owner->owner_name }}</td>
+                                                <td>{{ $owner->owner_phone }}</td>
+                                                <td>{{ $owner->owner_address }}</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

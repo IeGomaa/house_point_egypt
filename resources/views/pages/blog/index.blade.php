@@ -45,9 +45,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($blogs as $key => $blog)
+                                            @foreach($blogs as $blog)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $blog->id }}</td>
                                                     <td>{{ $blog->title }}</td>
                                                     <td>{{ $blog->description }}</td>
                                                     <td>

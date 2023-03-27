@@ -46,9 +46,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($countries as $key => $country)
+                                            @foreach($countries as $country)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $country->id }}</td>
                                                     <td>{{ $country->name }}</td>
                                                     <td>{{ $country->iso }}</td>
                                                     <td>{{ $country->country_code }}</td>

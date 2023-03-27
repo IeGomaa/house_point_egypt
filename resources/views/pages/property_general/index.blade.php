@@ -44,9 +44,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($property_generals as $key => $val)
+                                            @foreach($property_generals as $val)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $val->id }}</td>
                                                     <td>{{ $val->property->getTranslation('title', 'en') }}</td>
                                                     <td>{{ $val->general->name }}</td>
                                                     <td>

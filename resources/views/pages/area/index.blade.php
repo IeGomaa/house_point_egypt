@@ -50,9 +50,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($areas as $key => $area)
+                                            @foreach($areas as $area)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $area->id }}</td>
                                                     <td>{{ $area->getTranslation('name', 'en') }}</td>
                                                     <td>{{ $area->getTranslation('name', 'ar') }}</td>
                                                     <td>

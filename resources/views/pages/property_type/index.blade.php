@@ -50,9 +50,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($property_types as $key => $property_type)
+                                            @foreach($property_types as $property_type)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $property_type->id }}</td>
                                                     <td>{{ $property_type->getTranslation('type', 'en') }}</td>
                                                     <td>{{ $property_type->getTranslation('type', 'ar') }}</td>
                                                     <td>

@@ -1,6 +1,6 @@
 // Search 1
 
-$('#input-search').on('keyup', function() {
+$('#input-owner').on('keyup', function() {
   var rex = new RegExp($(this).val(), 'i');
     $('.searchable-container .items').hide();
     $('.searchable-container .items').filter(function() {

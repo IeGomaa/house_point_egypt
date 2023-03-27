@@ -178,7 +178,7 @@ function create(input, value) {
         throw new ParchmentError("Unable to create " + input + " blot");
     }
     var BlotClass = match;
-    var node = 
+    var node =
     // @ts-ignore
     input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
     return new BlotClass(node, value);
@@ -7954,7 +7954,7 @@ function diff_commonPrefix(text1, text2) {
   if (!text1 || !text2 || text1.charAt(0) != text2.charAt(0)) {
     return 0;
   }
-  // Binary search.
+  // Binary owner.
   // Performance analysis: http://neil.fraser.name/news/2007/10/09/
   var pointermin = 0;
   var pointermax = Math.min(text1.length, text2.length);
@@ -7986,7 +7986,7 @@ function diff_commonSuffix(text1, text2) {
       text1.charAt(text1.length - 1) != text2.charAt(text2.length - 1)) {
     return 0;
   }
-  // Binary search.
+  // Binary owner.
   // Performance analysis: http://neil.fraser.name/news/2007/10/09/
   var pointermin = 0;
   var pointermax = Math.min(text1.length, text2.length);

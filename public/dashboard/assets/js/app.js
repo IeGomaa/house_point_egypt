@@ -23,11 +23,11 @@ var App = function() {
         contentWrapper: '#content',
         contentWrapperContent: '.container',
         mainContentArea: '.main-content',
-        searchFull: '.toggle-search',
+        searchFull: '.toggle-owner',
         overlay: {
             sidebar: '.overlay',
             cs: '.cs-overlay',
-            search: '.search-overlay'
+            search: '.owner-overlay'
         }
     };
 
@@ -113,16 +113,16 @@ var App = function() {
         },
         search: function() {
             $(Selector.searchFull).click(function(event) {
-               $(this).parents('.search-animated').find('.search-full').addClass(ToggleClasses.inputFocused);
-               $(this).parents('.search-animated').addClass('show-search');
+               $(this).parents('.owner-animated').find('.owner-full').addClass(ToggleClasses.inputFocused);
+               $(this).parents('.owner-animated').addClass('show-search');
                $(Selector.overlay.search).addClass('show');
                $(Selector.overlay.search).addClass('show');
             });
 
             $(Selector.overlay.search).click(function(event) {
                $(this).removeClass('show');
-               $(Selector.searchFull).parents('.search-animated').find('.search-full').removeClass(ToggleClasses.inputFocused);
-               $(Selector.searchFull).parents('.search-animated').removeClass('show-search');
+               $(Selector.searchFull).parents('.owner-animated').find('.owner-full').removeClass(ToggleClasses.inputFocused);
+               $(Selector.searchFull).parents('.owner-animated').removeClass('show-search');
             });
         }
     }
@@ -163,7 +163,7 @@ var App = function() {
                 toggleFunction.sidebar();
             }
         },
-        
+
         onResize: function() {
             $(window).on('resize', function(event) {
                 event.preventDefault();
@@ -173,7 +173,7 @@ var App = function() {
                 }
             });
         }
-        
+
     }
 
     var _desktopResolution = {
@@ -185,7 +185,7 @@ var App = function() {
                 toggleFunction.onToggleSidebarSubmenu();
             }
         },
-        
+
         onResize: function() {
             $(window).on('resize', function(event) {
                 event.preventDefault();
@@ -195,7 +195,7 @@ var App = function() {
                 }
             });
         }
-        
+
     }
 
     function sidebarFunctionality() {
@@ -270,7 +270,7 @@ var App = function() {
             /*
                 Mobile Resoltion fn
             */
-            _mobileResolution.onRefresh();            
+            _mobileResolution.onRefresh();
             _mobileResolution.onResize();
 
             sidebarFunctionality();

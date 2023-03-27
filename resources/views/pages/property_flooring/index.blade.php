@@ -44,9 +44,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($property_flooring as $key => $val)
+                                            @foreach($property_flooring as $val)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $val->id }}</td>
                                                     <td>{{ $val->property->getTranslation('title', 'en') }}</td>
                                                     <td>{{ $val->flooring->getTranslation('floor', 'en') }}</td>
                                                     <td>

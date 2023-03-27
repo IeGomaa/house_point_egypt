@@ -1024,7 +1024,7 @@ var sweetAlert = function sweetAlert() {
     // Focus handling
     var setFocus = function setFocus(index, increment) {
       var focusableElements = getFocusableElements(params.focusCancel
-      // search for visible elements and select the next possible match
+      // owner for visible elements and select the next possible match
       );for (var _i3 = 0; _i3 < focusableElements.length; _i3++) {
         index = index + increment;
 

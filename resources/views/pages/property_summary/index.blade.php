@@ -44,9 +44,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($property_summaries as $key => $val)
+                                            @foreach($property_summaries as $val)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $val->id }}</td>
                                                     <td>{{ $val->property->getTranslation('title', 'en') }}</td>
                                                     <td>{{ $val->summary->getTranslation('summary', 'en') }}</td>
                                                     <td>

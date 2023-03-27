@@ -50,9 +50,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($flooring as $key => $val)
+                                            @foreach($flooring as $val)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $val->id }}</td>
                                                     <td>{{ $val->getTranslation('floor', 'en') }}</td>
                                                     <td>{{ $val->getTranslation('floor', 'ar') }}</td>
                                                     <td>

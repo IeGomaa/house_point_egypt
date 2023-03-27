@@ -49,9 +49,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($generals as $key => $general)
+                                            @foreach($generals as $general)
                                                 <tr>
-                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $general->id }}</td>
                                                     <td>{{ $general->name }}</td>
                                                     <td>
                                                         <form action="{{ route('admin.general.delete') }}" method="post">
