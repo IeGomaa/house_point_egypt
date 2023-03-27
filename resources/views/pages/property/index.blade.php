@@ -28,6 +28,12 @@
                                         <a href="{{route('admin.property.create')}}">
                                             <button class="btn btn-primary">Create Property</button>
                                         </a>
+                                        <a href="{{route('admin.property.import-page')}}">
+                                            <button class="btn btn-success">Upload Property Excel</button>
+                                        </a>
+                                        <a href="{{route('admin.property.export')}}">
+                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

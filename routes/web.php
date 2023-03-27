@@ -20,6 +20,7 @@ use App\Http\Controllers\Keyword\KeywordController;
 use App\Http\Controllers\Link\LinkController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Property\PropertyController;
+use App\Http\Controllers\Property\PropertyExcelController;
 use App\Http\Controllers\Property_Flooring\PropertyFlooringController;
 use App\Http\Controllers\Property_Flooring\PropertyFlooringExcelController;
 use App\Http\Controllers\Property_General\PropertyGeneralController;
@@ -118,11 +119,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::put('update', 'update')->name('update');
         });
 
-//        Route::controller(PropertyExcelController::class)->group(function () {
-//            Route::get('import-page', 'import_page')->name('import-page');
-//            Route::post('import', 'import')->name('import');
-//            Route::get('export', 'export')->name('export');
-//        });
+        Route::controller(PropertyExcelController::class)->group(function () {
+            Route::get('import-page', 'import_page')->name('import-page');
+            Route::post('import', 'import')->name('import');
+            Route::get('export', 'export')->name('export');
+        });
     });
 
     Route::group(['prefix' => 'property-flooring', 'as' => 'property-flooring.'], function () {
