@@ -54,7 +54,7 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = $this->getProperties();
+        $properties = $this->propertyModel::paginate(10);
         return view('pages.property.index', compact('properties'));
     }
 
