@@ -17,6 +17,7 @@ use App\Http\Controllers\General\GeneralController;
 use App\Http\Controllers\General\GeneralExcelController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Keyword\KeywordController;
+use App\Http\Controllers\Link\LinkController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Property\PropertyController;
 use App\Http\Controllers\Property_Flooring\PropertyFlooringController;
@@ -207,6 +208,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     Route::group(['prefix' => 'keyword', 'as' => 'keyword.'], function () {
         Route::controller(KeywordController::class)->group(function () {
+            Route::get('index', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::delete('delete', 'delete')->name('delete');
+            Route::post('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
+        });
+    });
+
+    Route::group(['prefix' => 'link', 'as' => 'link.'], function () {
+        Route::controller(linkController::class)->group(function () {
             Route::get('index', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
