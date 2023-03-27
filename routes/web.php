@@ -43,9 +43,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'error', 'as' => 'error.'], function () {
+Route::group(['as' => 'error.'], function () {
     Route::controller(ErrorController::class)->group(function () {
-        Route::get('404', 'pageNotFound')->name('404');
+        Route::get('404', 'page_not_found')->name('404');
+        Route::get('403', 'not_allowed_here')->name('403');
     });
 });
 
