@@ -15,7 +15,7 @@
     @enderror
 
     <label>Password</label>
-    <input type="text" name="password" value="{{ old('password', $user->password ?? '') }}" class="@error('password') is-invalid @enderror form-control">
+    <input type="text" name="password" value="{{ old('password') }}" class="@error('password') is-invalid @enderror form-control">
 
     @error('password')
     <div class="alert alert-danger">{{ $message }}</div>

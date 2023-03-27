@@ -40,6 +40,7 @@
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Delete</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -54,6 +55,13 @@
                                                             @method('DELETE')
                                                             <input type="hidden" name="id" value="{{ $user->id }}">
                                                             <input type="submit" value="Delete" class="btn btn-danger">
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        <form action="{{ route('admin.user.edit') }}" method="get">
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="{{ $user->id }}">
+                                                            <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
                                                 </tr>

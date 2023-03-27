@@ -4,7 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
-use App\Http\Requests\User\DeleteUserRequest;
+use App\Http\Requests\User\CheckUserIdRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Traits\UserTrait;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -41,7 +42,7 @@ class UserController extends Controller
         return redirect(route('admin.user.index'));
     }
 
-    public function delete(DeleteUserRequest $request)
+    public function delete(CheckUserIdRequest $request)
     {
         $user = $this->findUserById($request->id);
         if ($user == $this->userModel::where('email', 'ibrahim@admin.com')->first()) {
@@ -51,5 +52,23 @@ class UserController extends Controller
         $user->delete();
         Alert::toast('User Was Deleted Successfully', 'success');
         return back();
+    }
+
+    public function edit(CheckUserIdRequest $request)
+    {
+        $user = $this->findUserById($request->id);
+        return view('pages.user.edit', compact('user'));
+    }
+
+    public function update(UpdateUserRequest $request)
+    {
+        $user = $this->findUserById($request->id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password ? Hash::make($request->password) : $user->password
+        ]);
+        Alert::toast('User Was Updated Successfully', 'success');
+        return redirect(route('admin.user.index'));
     }
 }

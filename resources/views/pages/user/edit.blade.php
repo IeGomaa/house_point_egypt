@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    User | Create
+    User | Edit
 @endsection
 
 @push('css')
@@ -25,23 +25,24 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>User Create</h4>
+                                        <h4>User Edit</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-content widget-content-area">
-                                <form action="{{ route('admin.user.store') }}" method="post">
+                                <form action="{{ route('admin.user.update') }}" method="post">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group mb-4">
                                         <label>Name</label>
-                                        <input type="text" name="name" value="{{ old('name') }}" class="@error('name') is-invalid @enderror form-control">
+                                        <input type="text" name="name" value="{{ old('name', $user->name) }}" class="@error('name') is-invalid @enderror form-control">
 
                                         @error('name')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
                                         <label>Email</label>
-                                        <input type="text" name="email" value="{{ old('email') }}" class="@error('email') is-invalid @enderror form-control">
+                                        <input type="text" name="email" value="{{ old('email', $user->email) }}" class="@error('email') is-invalid @enderror form-control">
 
                                         @error('email')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -53,9 +54,11 @@
                                         @error('password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
+
+                                        <input type="hidden" name="id" value="{{ $user->id }}">
                                     </div>
 
-                                    <input type="submit" value="Send" class="mt-4 mb-4 btn btn-primary">
+                                    <input type="submit" value="Update" class="mt-4 mb-4 btn btn-primary">
                                 </form>
                             </div>
                         </div>

@@ -6,7 +6,6 @@ use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Blog\BlogController;
 use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\Country\CountryController;
-use App\Http\Controllers\Error\ErrorController;
 use App\Http\Controllers\Floor\FloorController;
 use App\Http\Controllers\Floor\FloorExcelController;
 use App\Http\Controllers\Flooring\FlooringController;
@@ -43,13 +42,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['as' => 'error.'], function () {
-    Route::controller(ErrorController::class)->group(function () {
-        Route::get('404', 'page_not_found')->name('404');
-        Route::get('403', 'not_allowed_here')->name('403');
-    });
-});
-
 Route::group(['as' => 'auth.'], function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/', 'index')->name('index');
@@ -73,6 +65,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::delete('delete', 'delete')->name('delete');
+            Route::get('edit', 'edit')->name('edit');
+            Route::put('update', 'update')->name('update');
         });
     });
 
