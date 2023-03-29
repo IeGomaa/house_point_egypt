@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Contact | Index
+    Permission & Model | Index
 @endsection
 
 @push('css')
@@ -14,7 +14,7 @@
 
     <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
-        <div class="container">
+        <div class="container" style="max-width: 100% !important;">
             <div class="container">
 
                 <div class="row layout-top-spacing">
@@ -24,7 +24,12 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Contact Table</h4>
+                                        <h4>Role & Model Table</h4>
+                                        @can('create role model')
+                                        <a href="{{route('admin.role-model.create')}}">
+                                            <button class="btn btn-primary">Assign Permission To User</button>
+                                        </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -34,37 +39,39 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Message</th>
-                                                @can('delete contact')
+                                                <th>User</th>
+                                                <th>Permission</th>
+                                                @can('delete role model')
                                                 <th>Delete</th>
                                                 @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($contacts as $contact)
-                                                <tr>
-                                                    <td>{{ $contact->id }}</td>
-                                                    <td>{{ $contact->name }}</td>
-                                                    <td>{{ $contact->email }}</td>
-                                                    <td>{{ $contact->phone }}</td>
-                                                    <td>{{ $contact->message }}</td>
-                                                    @can('delete contact')
-                                                    <td>
-                                                        <form action="{{ route('admin.contact.delete') }}" method="post">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $contact->id }}">
-                                                            <input type="submit" value="Delete" class="btn btn-danger">
-                                                        </form>
-                                                    </td>
-                                                    @endcan
-                                                </tr>
+                                            @foreach($users as $user)
+                                                @foreach($user->permissions as $permission)
+                                                    <tr>
+                                                        <td>{{ $permission->id }}</td>
+                                                        <td>{{ $user->name }}</td>
+                                                        <td>{{ $permission->name }}</td>
+                                                        @can('delete role model')
+                                                        <td>
+                                                            <form action="{{ route('admin.role-model.delete') }}" method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                                                <input type="hidden" name="permission_id" value="{{ $permission->id }}">
+                                                                <input type="submit" value="Delete" class="btn btn-danger">
+                                                            </form>
+                                                        </td>
+                                                        @endcan
+                                                    </tr>
+                                                @endforeach
                                             @endforeach
                                         </tbody>
                                     </table>
+
+                                    {!! $users->links() !!}
+
                                 </div>
 
                             </div>

@@ -10,6 +10,7 @@ use App\Http\Requests\PropertySummaryImportRequest;
 use App\Imports\PropertyFlooringImport;
 use App\Imports\PropertySummaryImport;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PropertySummaryExcelController extends Controller
@@ -22,6 +23,7 @@ class PropertySummaryExcelController extends Controller
     public function import(PropertySummaryImportRequest $request)
     {
         Excel::import(new PropertySummaryImport, $request->property_summary);
+        Alert::toast('Property Summary Excel Was Uploaded Successfully' , 'success');
         return redirect(route('admin.property-summary.index'));
     }
 

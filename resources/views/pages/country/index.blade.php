@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Country Table</h4>
+                                        @can('create country')
                                         <a href="{{route('admin.country.create')}}">
                                             <button class="btn btn-primary">Create Country</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import country')
                                         <a href="{{route('admin.country.import-page')}}">
                                             <button class="btn btn-success">Upload Country Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export country')
                                         <a href="{{route('admin.country.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -47,8 +55,12 @@
                                                 <th>Iso</th>
                                                 <th>Country Code</th>
                                                 <th>Phone Code</th>
+                                                @can('delete country')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit country')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,6 +71,7 @@
                                                     <td>{{ $country->iso }}</td>
                                                     <td>{{ $country->country_code }}</td>
                                                     <td>{{ $country->phone_code }}</td>
+                                                    @can('delete country')
                                                     <td>
                                                         <form action="{{ route('admin.country.delete') }}" method="post">
                                                             @csrf
@@ -67,6 +80,9 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+
+                                                    @can('edit country')
                                                     <td>
                                                         <form action="{{ route('admin.country.edit') }}" method="post">
                                                             @csrf
@@ -74,6 +90,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

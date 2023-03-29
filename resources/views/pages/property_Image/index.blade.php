@@ -25,9 +25,11 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Property Image Table</h4>
+                                        @can('create property image')
                                         <a href="{{route('admin.property-image.create')}}">
                                             <button class="btn btn-primary">Create Property Image</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -39,8 +41,13 @@
                                                 <th>Id</th>
                                                 <th>Property</th>
                                                 <th>Image</th>
+                                                @can('delete property image')
                                                 <th>Delete</th>
+                                                @endcan
+
+                                                @can('edit property image')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,6 +58,7 @@
                                                     <td>
                                                         <img width="50" src="{{ asset($val->image) }}" alt="property image">
                                                     </td>
+                                                    @can('delete property image')
                                                     <td>
                                                         <form action="{{ route('admin.property-image.delete') }}" method="post">
                                                             @csrf
@@ -59,6 +67,9 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+
+                                                    @can('edit property image')
                                                     <td>
                                                         <form action="{{ route('admin.property-image.edit') }}" method="post">
                                                             @csrf
@@ -66,6 +77,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

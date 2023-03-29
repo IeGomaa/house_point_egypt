@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Flooring\FlooringImportRequest;
 use App\Imports\FlooringImport;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class FlooringExcelController extends Controller
@@ -20,6 +21,7 @@ class FlooringExcelController extends Controller
     public function import(FlooringImportRequest $request)
     {
         Excel::import(new FlooringImport, $request->flooring);
+        Alert::toast('Flooring Excel Was Uploaded Successfully' , 'success');
         return redirect(route('admin.flooring.index'));
     }
 

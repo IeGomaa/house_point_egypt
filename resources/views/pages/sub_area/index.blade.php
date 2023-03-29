@@ -25,9 +25,11 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Sub Area Table</h4>
+                                        @can('create sub area')
                                         <a href="{{route('admin.sub-area.create')}}">
                                             <button class="btn btn-primary">Create Sub Area</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -40,8 +42,13 @@
                                                 <th>Name En</th>
                                                 <th>Name Ar</th>
                                                 <th>Area</th>
+                                                @can('delete sub area')
                                                 <th>Delete</th>
+                                                @endcan
+
+                                                @can('edit sub area')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,6 +58,7 @@
                                                     <td>{{ $subArea->getTranslation('name', 'en') }}</td>
                                                     <td>{{ $subArea->getTranslation('name', 'ar') }}</td>
                                                     <td>{{ $subArea->area->name }}</td>
+                                                    @can('delete sub area')
                                                     <td>
                                                         <form action="{{ route('admin.sub-area.delete') }}" method="post">
                                                             @csrf
@@ -59,6 +67,9 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+
+                                                    @can('edit sub area')
                                                     <td>
                                                         <form action="{{ route('admin.sub-area.edit') }}" method="post">
                                                             @csrf
@@ -66,6 +77,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

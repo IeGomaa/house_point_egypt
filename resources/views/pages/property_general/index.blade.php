@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Property General Table</h4>
+                                        @can('create property general')
                                         <a href="{{route('admin.property-general.create')}}">
                                             <button class="btn btn-primary">Create Property General</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import property general')
                                         <a href="{{route('admin.property-general.import-page')}}">
                                             <button class="btn btn-success">Upload Property General Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export property general')
                                         <a href="{{route('admin.property-general.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +53,12 @@
                                                 <th>Id</th>
                                                 <th>Property</th>
                                                 <th>General</th>
+                                                @can('delete property general')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit property general')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +67,7 @@
                                                     <td>{{ $val->id }}</td>
                                                     <td>{{ $val->property->getTranslation('title', 'en') }}</td>
                                                     <td>{{ $val->general->name }}</td>
+                                                    @can('delete property general')
                                                     <td>
                                                         <form action="{{ route('admin.property-general.delete') }}" method="post">
                                                             @csrf
@@ -63,6 +76,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit property general')
                                                     <td>
                                                         <form action="{{ route('admin.property-general.edit') }}" method="post">
                                                             @csrf
@@ -70,6 +85,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

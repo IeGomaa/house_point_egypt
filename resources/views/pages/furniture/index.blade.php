@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Furniture Table</h4>
+                                        @can('create furniture')
                                         <a href="{{route('admin.furniture.create')}}">
                                             <button class="btn btn-primary">Create Furniture</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import furniture')
                                         <a href="{{route('admin.furniture.import-page')}}">
                                             <button class="btn btn-success">Upload Furniture Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export furniture')
                                         <a href="{{route('admin.furniture.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +53,12 @@
                                                 <th>Id</th>
                                                 <th>Furniture En</th>
                                                 <th>Furniture Ar</th>
+                                                @can('delete furniture')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit furniture')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +67,7 @@
                                                     <td>{{ $val->id }}</td>
                                                     <td>{{ $val->getTranslation('furniture', 'en') }}</td>
                                                     <td>{{ $val->getTranslation('furniture', 'ar') }}</td>
+                                                    @can('delete furniture')
                                                     <td>
                                                         <form action="{{ route('admin.furniture.delete') }}" method="post">
                                                             @csrf
@@ -63,6 +76,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit furniture')
                                                     <td>
                                                         <form action="{{ route('admin.furniture.edit') }}" method="post">
                                                             @csrf
@@ -70,6 +85,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

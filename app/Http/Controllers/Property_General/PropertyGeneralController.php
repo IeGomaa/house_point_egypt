@@ -13,6 +13,7 @@ use App\Models\General;
 use App\Models\Property;
 use App\Models\PropertyGeneral;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PropertyGeneralController extends Controller
 {
@@ -46,12 +47,14 @@ class PropertyGeneralController extends Controller
             'property_id' => $request->property_id,
             'general_id' => $request->general_id
         ]);
+        Alert::toast('Property General Was Updated Successfully' , 'success');
         return redirect(route('admin.property-general.index'));
     }
 
     public function delete(CheckPropertyGeneralIdRequest $request): RedirectResponse
     {
         $this->findPropertyGeneralById($request->id)->delete();
+        Alert::toast('Property General Was Deleted Successfully' , 'success');
         return back();
     }
 
@@ -69,6 +72,7 @@ class PropertyGeneralController extends Controller
             'property_id' => $request->property_id,
             'general_id' => $request->general_id
         ]);
+        Alert::toast('Property General Was Updated Successfully' , 'success');
         return redirect(route('admin.property-general.index'));
     }
 }

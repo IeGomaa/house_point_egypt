@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>General Table</h4>
+                                        @can('create general')
                                         <a href="{{route('admin.general.create')}}">
                                             <button class="btn btn-primary">Create General</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import general')
                                         <a href="{{route('admin.general.import-page')}}">
                                             <button class="btn btn-success">Upload General Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export general')
                                         <a href="{{route('admin.general.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +52,12 @@
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
+                                                @can('delete general')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit general')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -53,6 +65,7 @@
                                                 <tr>
                                                     <td>{{ $general->id }}</td>
                                                     <td>{{ $general->name }}</td>
+                                                    @can('delete general')
                                                     <td>
                                                         <form action="{{ route('admin.general.delete') }}" method="post">
                                                             @csrf
@@ -61,6 +74,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit general')
                                                     <td>
                                                         <form action="{{ route('admin.general.edit') }}" method="post">
                                                             @csrf
@@ -68,6 +83,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

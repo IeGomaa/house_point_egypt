@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Summary\SummaryImportRequest;
 use App\Imports\SummaryImport;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SummaryExcelController extends Controller
@@ -19,6 +20,7 @@ class SummaryExcelController extends Controller
     public function import(SummaryImportRequest $request)
     {
         Excel::import(new SummaryImport, $request->summary);
+        Alert::toast('Summary Excel Was Uploaded Successfully' , 'success');
         return redirect(route('admin.summary.index'));
     }
 

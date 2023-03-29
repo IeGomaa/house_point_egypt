@@ -13,6 +13,7 @@ use App\Models\Property;
 use App\Models\PropertySummary;
 use App\Models\Summary;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PropertySummaryController extends Controller
 {
@@ -46,12 +47,14 @@ class PropertySummaryController extends Controller
             'property_id' => $request->property_id,
             'summary_id' => $request->summary_id
         ]);
+        Alert::toast('Property Summary Was Created Successfully' , 'success');
         return redirect(route('admin.property-summary.index'));
     }
 
     public function delete(CheckPropertySummaryIdRequest $request): RedirectResponse
     {
         $this->findPropertySummaryById($request->id)->delete();
+        Alert::toast('Property Summary Was Deleted Successfully' , 'success');
         return back();
     }
 
@@ -69,6 +72,7 @@ class PropertySummaryController extends Controller
             'property_id' => $request->property_id,
             'summary_id' => $request->summary_id
         ]);
+        Alert::toast('Property Summary Was Update Successfully' , 'success');
         return redirect(route('admin.property-summary.index'));
     }
 }

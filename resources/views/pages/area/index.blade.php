@@ -25,15 +25,24 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Area Table</h4>
+
+                                        @can('create area')
                                         <a href="{{route('admin.area.create')}}">
                                             <button class="btn btn-primary">Create Area</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import area')
                                         <a href="{{route('admin.area.import-page')}}">
                                             <button class="btn btn-success">Upload Area Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export area')
                                         <a href="{{route('admin.area.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +54,12 @@
                                                 <th>Id</th>
                                                 <th>Name En</th>
                                                 <th>Name Ar</th>
+                                                @can('delete area')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit area')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +68,7 @@
                                                     <td>{{ $area->id }}</td>
                                                     <td>{{ $area->getTranslation('name', 'en') }}</td>
                                                     <td>{{ $area->getTranslation('name', 'ar') }}</td>
+                                                    @can('delete area')
                                                     <td>
                                                         <form action="{{ route('admin.area.delete') }}" method="post">
                                                             @csrf
@@ -63,6 +77,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit area')
                                                     <td>
                                                         <form action="{{ route('admin.area.edit') }}" method="post">
                                                             @csrf
@@ -70,6 +86,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

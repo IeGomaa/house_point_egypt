@@ -10,6 +10,7 @@ use App\Http\Traits\AreaTrait;
 use App\Http\Traits\SubAreaTrait;
 use App\Models\Area;
 use App\Models\SubArea;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SubAreaController extends Controller
 {
@@ -43,12 +44,14 @@ class SubAreaController extends Controller
             ],
             'area_id' => $request->area_id
         ]);
+        Alert::toast('Sub Area Was Created Successfully' , 'success');
         return redirect(route('admin.sub-area.index'));
     }
 
     public function delete(CheckSubAreaIdRequest $request)
     {
         $this->findSubAreaById($request->id)->delete();
+        Alert::toast('Sub Area Was Deleted Successfully' , 'success');
         return back();
     }
 
@@ -68,6 +71,7 @@ class SubAreaController extends Controller
             ],
             'area_id' => $request->area_id
         ]);
+        Alert::toast('Sub Area Was Updated Successfully' , 'success');
         return redirect(route('admin.sub-area.index'));
     }
 }

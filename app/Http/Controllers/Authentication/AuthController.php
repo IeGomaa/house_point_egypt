@@ -30,6 +30,7 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
+        Alert::toast('Logout Successfully' , 'success');
         return redirect(route('auth.index'));
     }
 }

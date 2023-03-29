@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Summary Table</h4>
+                                        @can('create summary')
                                         <a href="{{route('admin.summary.create')}}">
                                             <button class="btn btn-primary">Create Summary</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import summary')
                                         <a href="{{route('admin.summary.import-page')}}">
                                             <button class="btn btn-success">Upload Summary Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export summary')
                                         <a href="{{route('admin.summary.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +53,12 @@
                                                 <th>Id</th>
                                                 <th>Summary En</th>
                                                 <th>Summary Ar</th>
+                                                @can('delete summary')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit summary')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +67,7 @@
                                                     <td>{{ $summary->id }}</td>
                                                     <td>{{ $summary->getTranslation('summary', 'en') }}</td>
                                                     <td>{{ $summary->getTranslation('summary', 'ar') }}</td>
+                                                    @can('delete summary')
                                                     <td>
                                                         <form action="{{ route('admin.summary.delete') }}" method="post">
                                                             @csrf
@@ -63,6 +76,9 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+
+                                                    @can('edit summary')
                                                     <td>
                                                         <form action="{{ route('admin.summary.edit') }}" method="post">
                                                             @csrf
@@ -70,6 +86,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

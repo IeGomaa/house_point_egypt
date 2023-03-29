@@ -13,6 +13,7 @@ use App\Models\Flooring;
 use App\Models\Property;
 use App\Models\PropertyFlooring;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PropertyFlooringController extends Controller
 {
@@ -46,12 +47,14 @@ class PropertyFlooringController extends Controller
             'property_id' => $request->property_id,
             'flooring_id' => $request->flooring_id
         ]);
+        Alert::toast('Property Flooring Was Created Successfully' , 'success');
         return redirect(route('admin.property-flooring.index'));
     }
 
     public function delete(CheckPropertyFlooringIdRequest $request): RedirectResponse
     {
         $this->findPropertyFlooringById($request->id)->delete();
+        Alert::toast('Property Flooring Was Deleted Successfully' , 'success');
         return back();
     }
 
@@ -69,6 +72,7 @@ class PropertyFlooringController extends Controller
             'property_id' => $request->property_id,
             'flooring_id' => $request->flooring_id
         ]);
+        Alert::toast('Property Flooring Was Updated Successfully' , 'success');
         return redirect(route('admin.property-flooring.index'));
     }
 }

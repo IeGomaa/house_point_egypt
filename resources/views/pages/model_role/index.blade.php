@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Property Summary | Index
+    Model & Role | Index
 @endsection
 
 @push('css')
@@ -14,7 +14,7 @@
 
     <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
-        <div class="container">
+        <div class="container" style="max-width: 100% !important;">
             <div class="container">
 
                 <div class="row layout-top-spacing">
@@ -24,22 +24,10 @@
                             <div class="widget-header">
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                        <h4>Property Summary Table</h4>
-                                        @can('create property summary')
-                                        <a href="{{route('admin.property-summary.create')}}">
-                                            <button class="btn btn-primary">Create Property Summary</button>
-                                        </a>
-                                        @endcan
-
-                                        @can('delete property summary')
-                                        <a href="{{route('admin.property-summary.import-page')}}">
-                                            <button class="btn btn-success">Upload Property Summary Excel</button>
-                                        </a>
-                                        @endcan
-
-                                        @can('edit property summary')
-                                        <a href="{{route('admin.property-summary.export')}}">
-                                            <button class="btn btn-secondary">Download Dummy Data</button>
+                                        <h4>Model & Role Table</h4>
+                                        @can('create role model')
+                                        <a href="{{route('admin.model-role.create')}}">
+                                            <button class="btn btn-primary">Assign Role To Model</button>
                                         </a>
                                         @endcan
                                     </div>
@@ -51,39 +39,27 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Property</th>
-                                                <th>Summary</th>
-                                                @can('delete property summary')
+                                                <th>User</th>
+                                                <th>Role</th>
+                                                @can('delete role model')
                                                 <th>Delete</th>
-                                                @endcan
-                                                @can('edit property summary')
-                                                <th>Edit</th>
                                                 @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($property_summaries as $val)
+                                            @foreach($users as $user)
                                                 <tr>
-                                                    <td>{{ $val->id }}</td>
-                                                    <td>{{ $val->property->getTranslation('title', 'en') }}</td>
-                                                    <td>{{ $val->summary->getTranslation('summary', 'en') }}</td>
-                                                    @can('delete property summary')
+                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    @can('delete role model')
                                                     <td>
-                                                        <form action="{{ route('admin.property-summary.delete') }}" method="post">
+                                                        <form action="{{ route('admin.role-permission.delete') }}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <input type="hidden" name="id" value="{{ $val->id }}">
+                                                            <input type="hidden" name="role_id" value="{{ $user->id }}">
+                                                            <input type="hidden" name="permission_id" value="{{ $permission->id }}">
                                                             <input type="submit" value="Delete" class="btn btn-danger">
-                                                        </form>
-                                                    </td>
-                                                    @endcan
-
-                                                    @can('edit property summary')
-                                                    <td>
-                                                        <form action="{{ route('admin.property-summary.edit') }}" method="post">
-                                                            @csrf
-                                                            <input type="hidden" name="id" value="{{ $val->id }}">
-                                                            <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
                                                     @endcan
@@ -91,6 +67,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+
                                 </div>
 
                             </div>

@@ -54,6 +54,13 @@ class InitProject extends Command
         ]);
 
         $this->info('User Created Successfully');
+
+        Artisan::call('db:seed PermissionSeeder');
+        $this->info('Permission Seeder Was Seed');
+
+        Artisan::call('db:seed ModelPermissionSeeder');
+        $this->info('Model Permission Seeder Was Seed');
+
         return self::SUCCESS;
     }
 }

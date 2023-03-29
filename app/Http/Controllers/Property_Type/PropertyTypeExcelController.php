@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyType\PropertyTypeImportRequest;
 use App\Imports\PropertyTypeImport;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PropertyTypeExcelController extends Controller
@@ -19,6 +20,7 @@ class PropertyTypeExcelController extends Controller
     public function import(PropertyTypeImportRequest $request)
     {
         Excel::import(new PropertyTypeImport, $request->property_type);
+        Alert::toast('Property Type Excel Was Uploaded Successfully' , 'success');
         return redirect(route('admin.property-type.index'));
     }
 

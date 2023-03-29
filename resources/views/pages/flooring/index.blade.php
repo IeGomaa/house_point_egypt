@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Flooring Table</h4>
+                                        @can('create flooring')
                                         <a href="{{route('admin.flooring.create')}}">
                                             <button class="btn btn-primary">Create Flooring</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import flooring')
                                         <a href="{{route('admin.flooring.import-page')}}">
                                             <button class="btn btn-success">Upload Flooring Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export flooring')
                                         <a href="{{route('admin.flooring.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +53,12 @@
                                                 <th>Id</th>
                                                 <th>Floor En</th>
                                                 <th>Floor Ar</th>
+                                                @can('delete flooring')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit flooring')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +67,7 @@
                                                     <td>{{ $val->id }}</td>
                                                     <td>{{ $val->getTranslation('floor', 'en') }}</td>
                                                     <td>{{ $val->getTranslation('floor', 'ar') }}</td>
+                                                    @can('delete flooring')
                                                     <td>
                                                         <form action="{{ route('admin.flooring.delete') }}" method="post">
                                                             @csrf
@@ -63,6 +76,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit flooring')
                                                     <td>
                                                         <form action="{{ route('admin.flooring.edit') }}" method="post">
                                                             @csrf
@@ -70,6 +85,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

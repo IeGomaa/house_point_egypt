@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Area\AreaImportRequest;
 use App\Imports\AreaImport;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AreaExcelController extends Controller
@@ -19,6 +20,7 @@ class AreaExcelController extends Controller
     public function import(AreaImportRequest $request)
     {
         Excel::import(new AreaImport, $request->area);
+        Alert::toast('Area Excel Was Uploaded Successfully' , 'success');
         return redirect(route('admin.area.index'));
     }
 

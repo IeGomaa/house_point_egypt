@@ -10,6 +10,7 @@ use App\Http\Requests\PropertyGeneralImportRequest;
 use App\Imports\GeneralImport;
 use App\Imports\PropertyGeneralImport;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PropertyGeneralExcelController extends Controller
@@ -22,6 +23,7 @@ class PropertyGeneralExcelController extends Controller
     public function import(PropertyGeneralImportRequest $request)
     {
         Excel::import(new PropertyGeneralImport, $request->property_general);
+        Alert::toast('Property General Excel Was Uploaded Successfully' , 'success');
         return redirect(route('admin.property-general.index'));
     }
 

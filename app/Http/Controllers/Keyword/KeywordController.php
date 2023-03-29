@@ -9,6 +9,7 @@ use App\Http\Requests\Keyword\UpdateKeywordRequest;
 use App\Http\Traits\KeywordTrait;
 use App\Models\Keyword;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KeywordController extends Controller
 {
@@ -50,12 +51,14 @@ class KeywordController extends Controller
                 'ar' => $request->tag_ar
             ]
         ]);
+        Alert::toast('Keyword Was Created Successfully' , 'success');
         return redirect(route('admin.keyword.index'));
     }
 
     public function delete(CheckKeywordIdRequest $request)
     {
         $this->findKeywordById($request->id)->delete();
+        Alert::toast('Keyword Was Deleted Successfully' , 'success');
         return back();
     }
 
@@ -85,6 +88,7 @@ class KeywordController extends Controller
                 'ar' => $request->tag_ar
             ]
         ]);
+        Alert::toast('Keyword Was Updated Successfully' , 'success');
         return redirect(route('admin.keyword.index'));
     }
 }

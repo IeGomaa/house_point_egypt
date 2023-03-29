@@ -25,15 +25,23 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Property Type Table</h4>
+                                        @can('create property type')
                                         <a href="{{route('admin.property-type.create')}}">
                                             <button class="btn btn-primary">Create Property Type</button>
                                         </a>
+                                        @endcan
+
+                                        @can('import property type')
                                         <a href="{{route('admin.property-type.import-page')}}">
                                             <button class="btn btn-success">Upload Property Type Excel</button>
                                         </a>
+                                        @endcan
+
+                                        @can('export property type')
                                         <a href="{{route('admin.property-type.export')}}">
                                             <button class="btn btn-secondary">Download Dummy Data</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -45,8 +53,13 @@
                                                 <th>Id</th>
                                                 <th>Type En</th>
                                                 <th>Type Ar</th>
+                                                @can('delete property type')
                                                 <th>Delete</th>
+                                                @endcan
+
+                                                @can('edit property type')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +68,7 @@
                                                     <td>{{ $property_type->id }}</td>
                                                     <td>{{ $property_type->getTranslation('type', 'en') }}</td>
                                                     <td>{{ $property_type->getTranslation('type', 'ar') }}</td>
+                                                    @can('delete property type')
                                                     <td>
                                                         <form action="{{ route('admin.property-type.delete') }}" method="post">
                                                             @csrf
@@ -63,6 +77,9 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+
+                                                    @can('edit property type')
                                                     <td>
                                                         <form action="{{ route('admin.property-type.edit') }}" method="post">
                                                             @csrf
@@ -70,6 +87,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

@@ -25,9 +25,11 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Link Table</h4>
+                                        @can('create link')
                                         <a href="{{route('admin.link.create')}}">
                                             <button class="btn btn-primary">Create Link</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -39,8 +41,12 @@
                                                 <th>Id</th>
                                                 <th>Link</th>
                                                 <th>Position</th>
+                                                @can('delete link')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit link')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -49,6 +55,7 @@
                                                     <td>{{ $link->id }}</td>
                                                     <td>{{ $link->link }}</td>
                                                     <td>{{ $link->position }}</td>
+                                                    @can('delete keyword')
                                                     <td>
                                                         <form action="{{ route('admin.link.delete') }}" method="post">
                                                             @csrf
@@ -57,6 +64,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit keyword')
                                                     <td>
                                                         <form action="{{ route('admin.link.edit') }}" method="post">
                                                             @csrf
@@ -64,6 +73,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>

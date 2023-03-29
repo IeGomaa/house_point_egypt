@@ -13,6 +13,7 @@ use App\Http\Traits\PropertyTrait;
 use App\Models\Property;
 use App\Models\PropertyImage;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PropertyImageController extends Controller
 {
@@ -46,6 +47,7 @@ class PropertyImageController extends Controller
                 'image' => $imageName
             ]);
         }
+        Alert::toast('Property Image Was Created Successfully' , 'success');
         return redirect(route('admin.property-image.index'));
     }
 
@@ -54,6 +56,7 @@ class PropertyImageController extends Controller
         $propertyImage = $this->findPropertyImageById($request->id);
         $service->deleteImageInLocal($propertyImage->image);
         $propertyImage->delete();
+        Alert::toast('Property Image Was Deleted Successfully' , 'success');
         return back();
     }
 
@@ -72,6 +75,7 @@ class PropertyImageController extends Controller
             'property_id' => $request->property_id,
             'image' => $imageName
         ]);
+        Alert::toast('Property Image Was Updated Successfully' , 'success');
         return redirect(route('admin.property-image.index'));
     }
 }

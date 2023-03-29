@@ -25,9 +25,11 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h4>Blog Table</h4>
+                                        @can('create blog')
                                         <a href="{{route('admin.blog.create')}}">
                                             <button class="btn btn-primary">Create Blog</button>
                                         </a>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>
@@ -40,8 +42,12 @@
                                                 <th>Title</th>
                                                 <th>Description</th>
                                                 <th>Image</th>
+                                                @can('delete blog')
                                                 <th>Delete</th>
+                                                @endcan
+                                                @can('edit blog')
                                                 <th>Edit</th>
+                                                @endcan
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -53,6 +59,7 @@
                                                     <td>
                                                         <img width="100" src="{{ asset($blog->image) }}" alt="blog_image">
                                                     </td>
+                                                    @can('delete blog')
                                                     <td>
                                                         <form action="{{ route('admin.blog.delete') }}" method="post">
                                                             @csrf
@@ -61,6 +68,8 @@
                                                             <input type="submit" value="Delete" class="btn btn-danger">
                                                         </form>
                                                     </td>
+                                                    @endcan
+                                                    @can('edit blog')
                                                     <td>
                                                         <form action="{{ route('admin.blog.edit') }}" method="post">
                                                             @csrf
@@ -68,6 +77,7 @@
                                                             <input type="submit" value="Edit" class="btn btn-warning">
                                                         </form>
                                                     </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </tbody>
